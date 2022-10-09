@@ -156,8 +156,9 @@ class LocalClusterOutputDeviceManager:
 
         container_registry = CuraApplication.getInstance().getContainerRegistry()
         ultimaker_machines = container_registry.findContainersMetadata(type="machine", manufacturer="Ultimaker B.V.")
+        other_network_machines = container_registry.findContainersMetadata(type="machine", manufacturer="Ninja3D")
         found_machine_type_identifiers = {}  # type: Dict[str, str]
-        for machine in ultimaker_machines:
+        for machine in ultimaker_machines + other_network_machines:
             machine_type = machine.get("id", None)
             machine_bom_numbers = machine.get("bom_numbers", [])
             if machine_type and machine_bom_numbers:

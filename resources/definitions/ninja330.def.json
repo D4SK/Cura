@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "name": "Ninja330",
+    "inherits": "ninja_base",
+    "metadata": {
+        "preferred_variant_name": "AA 0.4",
+        "preferred_quality_type": "normal",
+        "machine_extruder_trains":{ "0": "ninja330_extruder_0", "1": "ninja330_extruder_1" },
+        "weight": -1,
+        "bom_numbers": [888888],
+        "platform": "ninja330_platform.obj"
+    },
+    "overrides": {
+        "machine_name": { "default_value": "Ninja330" },
+        "machine_width": { "default_value": 330 },
+        "machine_depth": { "default_value": 240 },
+        "machine_height": { "default_value": 310 },
+        "machine_extruder_count": { "default_value": 2 }
+
+    }
+
+}
