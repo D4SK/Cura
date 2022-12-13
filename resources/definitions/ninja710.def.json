@@ -63,7 +63,7 @@
         "extruder_prime_pos_abs": { "default_value": true },
         "machine_start_gcode":
         {
-            "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0 INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0}" 
+            "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0}" 
         },
         "machine_end_gcode":
         {
