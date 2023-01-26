@@ -16,7 +16,5 @@
         "machine_depth": { "default_value": 240 },
         "machine_height": { "default_value": 310 },
         "machine_extruder_count": { "default_value": 2 }
-
     }
-
 }
