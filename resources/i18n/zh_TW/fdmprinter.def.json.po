@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cura 5.1\n"
 "Report-Msgid-Bugs-To: plugins@ultimaker.com\n"
-"POT-Creation-Date: 2023-03-08 09:03+0000\n"
+"POT-Creation-Date: 2023-03-10 16:24+0000\n"
 "PO-Revision-Date: 2022-01-02 20:24+0800\n"
 "Last-Translator: Valen Chang  <carf17771@gmail.com>\n"
 "Language-Team: Valen Chang <carf17771@gmail.com>\n"
@@ -1016,6 +1016,11 @@ msgid "Dual Extrusion"
 msgstr "雙重擠出機"
 
 #: fdmprinter.def.json
+msgctxt "idex_mode option duplicate"
+msgid "Duplicate"
+msgstr ""
+
+#: fdmprinter.def.json
 msgctxt "machine_shape option elliptic"
 msgid "Elliptic"
 msgstr "類圓形"
@@ -1742,6 +1747,11 @@ msgstr "切換到另一線材時，要使用多少線材（以線材長度計算
 msgctxt "machine_extruders_shared_nozzle_initial_retraction description"
 msgid "How much the filament of each extruder is assumed to have been retracted from the shared nozzle tip at the completion of the printer-start gcode script; the value should be equal to or greater than the length of the common part of the nozzle's ducts."
 msgstr "在完成\"Printer-start G-code\"後，各擠出機將從共用噴頭回抽多少的線材。此數值應等於或大於噴頭的共用管道長度。"
+
+#: fdmprinter.def.json
+msgctxt "idex_mode label"
+msgid "Idex Duplication Mode"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "bridge_skin_support_threshold description"
@@ -2684,6 +2694,11 @@ msgid "Minimum width to which the base of the conical support area is reduced. S
 msgstr "錐形支撐區域底部的最小寬度。寬度較小可能導致不穩定的支撐結構。"
 
 #: fdmprinter.def.json
+msgctxt "idex_mode option mirror"
+msgid "Mirror"
+msgstr ""
+
+#: fdmprinter.def.json
 msgctxt "mold_enabled label"
 msgid "Mold"
 msgstr "模具"
@@ -2867,6 +2882,11 @@ msgstr "從支撐頂層往下，填充密度減半的次數。越靠近頂層的
 msgctxt "infill_pattern option tetrahedral"
 msgid "Octet"
 msgstr "八面體"
+
+#: fdmprinter.def.json
+msgctxt "idex_mode option off"
+msgid "Off"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "retraction_combing option off"
@@ -3122,6 +3142,11 @@ msgstr "列印薄壁"
 msgctxt "prime_tower_enable description"
 msgid "Print a tower next to the print which serves to prime the material after each nozzle switch."
 msgstr "在列印件旁邊印一個塔，用在每次切換噴頭後填充線材。"
+
+#: fdmprinter.def.json
+msgctxt "idex_mode description"
+msgid "Print an object twice using both Extruders simultaneously. Using mirror is preferred when applicable as it generates less vibrations"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "infill_support_enabled description"

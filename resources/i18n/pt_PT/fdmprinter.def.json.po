@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uranium json setting files\n"
 "Report-Msgid-Bugs-To: plugins@ultimaker.com\n"
-"POT-Creation-Date: 2023-03-08 09:03+0000\n"
+"POT-Creation-Date: 2023-03-10 16:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE\n"
@@ -1011,6 +1011,11 @@ msgid "Dual Extrusion"
 msgstr "Dupla Extrusão"
 
 #: fdmprinter.def.json
+msgctxt "idex_mode option duplicate"
+msgid "Duplicate"
+msgstr ""
+
+#: fdmprinter.def.json
 msgctxt "machine_shape option elliptic"
 msgid "Elliptic"
 msgstr "Elíptica"
@@ -1737,6 +1742,11 @@ msgstr "A quantidade de material que deve usar para purgar o material anterior p
 msgctxt "machine_extruders_shared_nozzle_initial_retraction description"
 msgid "How much the filament of each extruder is assumed to have been retracted from the shared nozzle tip at the completion of the printer-start gcode script; the value should be equal to or greater than the length of the common part of the nozzle's ducts."
 msgstr "Até que ponto se assume que o filamento de cada extrusora foi retraído a partir da ponta do bocal partilhado após a conclusão do script gcode de arranque da impressora; o valor deverá ser igual ou superior ao comprimento da parte comum das condutas do bocal."
+
+#: fdmprinter.def.json
+msgctxt "idex_mode label"
+msgid "Idex Duplication Mode"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "bridge_skin_support_threshold description"
@@ -2679,6 +2689,11 @@ msgid "Minimum width to which the base of the conical support area is reduced. S
 msgstr "O diâmetro mínima para a qual a base da área do suporte cónico é reduzida. Larguras reduzidas podem originar estruturas de suporte instáveis."
 
 #: fdmprinter.def.json
+msgctxt "idex_mode option mirror"
+msgid "Mirror"
+msgstr ""
+
+#: fdmprinter.def.json
 msgctxt "mold_enabled label"
 msgid "Mold"
 msgstr "Molde"
@@ -2862,6 +2877,11 @@ msgstr "O número de vezes que a densidade de enchimento do suporte deve ser red
 msgctxt "infill_pattern option tetrahedral"
 msgid "Octet"
 msgstr "Octeto"
+
+#: fdmprinter.def.json
+msgctxt "idex_mode option off"
+msgid "Off"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "retraction_combing option off"
@@ -3117,6 +3137,11 @@ msgstr "Imprimir Paredes Finas"
 msgctxt "prime_tower_enable description"
 msgid "Print a tower next to the print which serves to prime the material after each nozzle switch."
 msgstr "Imprime uma torre próxima da impressão que prepara o material depois de cada substituição do nozzle."
+
+#: fdmprinter.def.json
+msgctxt "idex_mode description"
+msgid "Print an object twice using both Extruders simultaneously. Using mirror is preferred when applicable as it generates less vibrations"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "infill_support_enabled description"

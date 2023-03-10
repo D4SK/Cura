@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cura 5.1\n"
 "Report-Msgid-Bugs-To: plugins@ultimaker.com\n"
-"POT-Creation-Date: 2023-03-08 09:03+0000\n"
+"POT-Creation-Date: 2023-03-10 16:24+0000\n"
 "PO-Revision-Date: 2022-07-15 11:17+0200\n"
 "Last-Translator: Bothof <info@bothof.nl>\n"
 "Language-Team: Finnish\n"
@@ -1013,6 +1013,11 @@ msgid "Dual Extrusion"
 msgstr "Kaksoispursotus"
 
 #: fdmprinter.def.json
+msgctxt "idex_mode option duplicate"
+msgid "Duplicate"
+msgstr ""
+
+#: fdmprinter.def.json
 msgctxt "machine_shape option elliptic"
 msgid "Elliptic"
 msgstr "Soikea"
@@ -1734,6 +1739,11 @@ msgstr ""
 #: fdmprinter.def.json
 msgctxt "machine_extruders_shared_nozzle_initial_retraction description"
 msgid "How much the filament of each extruder is assumed to have been retracted from the shared nozzle tip at the completion of the printer-start gcode script; the value should be equal to or greater than the length of the common part of the nozzle's ducts."
+msgstr ""
+
+#: fdmprinter.def.json
+msgctxt "idex_mode label"
+msgid "Idex Duplication Mode"
 msgstr ""
 
 #: fdmprinter.def.json
@@ -2677,6 +2687,11 @@ msgid "Minimum width to which the base of the conical support area is reduced. S
 msgstr "Minimileveys, johon kartiomaisen tukialueen perusta pienennetään. Pienet leveydet voivat johtaa epävakaisiin tukirakenteisiin."
 
 #: fdmprinter.def.json
+msgctxt "idex_mode option mirror"
+msgid "Mirror"
+msgstr ""
+
+#: fdmprinter.def.json
 msgctxt "mold_enabled label"
 msgid "Mold"
 msgstr "Muotti"
@@ -2860,6 +2875,11 @@ msgstr "Määrä kertoja, joilla tuen täytön tiheyttä vähennetään puolella
 msgctxt "infill_pattern option tetrahedral"
 msgid "Octet"
 msgstr "Oktetti"
+
+#: fdmprinter.def.json
+msgctxt "idex_mode option off"
+msgid "Off"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "retraction_combing option off"
@@ -3115,6 +3135,11 @@ msgstr "Tulosta ohuet seinämät"
 msgctxt "prime_tower_enable description"
 msgid "Print a tower next to the print which serves to prime the material after each nozzle switch."
 msgstr "Tulosta tulosteen viereen torni, jolla materiaali esitäytetään aina suuttimen vaihdon jälkeen."
+
+#: fdmprinter.def.json
+msgctxt "idex_mode description"
+msgid "Print an object twice using both Extruders simultaneously. Using mirror is preferred when applicable as it generates less vibrations"
+msgstr ""
 
 #: fdmprinter.def.json
 msgctxt "infill_support_enabled description"
