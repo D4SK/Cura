@@ -6266,6 +6266,23 @@
             "description": "Settings used for printing with multiple extruders.",
             "children":
             {
+                "idex_mode":
+                {
+                    "label": "Idex Duplication Mode",
+                    "description": "Print an object twice using both Extruders simultaneously. Using mirror is preferred when applicable as it generates less vibrations",
+                    "default_value": "off",
+                    "type": "enum",
+                    "options":
+                    {
+                        "off": "Off",
+                        "mirror": "Mirror",
+                        "duplicate": "Duplicate"
+                    },
+                    "enabled": false,
+                    "settable_per_mesh": false,
+                    "settable_per_extruder": false,
+                    "settable_per_meshgroup": false
+                },
                 "prime_tower_enable":
                 {
                     "label": "Enable Prime Tower",

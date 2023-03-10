@@ -17,12 +17,7 @@
         "preferred_quality_type": "normal",
         "variants_name": "Print core",
         "nozzle_offsetting_for_disallowed_areas": false,
-        "machine_extruder_trains":
-        {
-            "0": "ninja710_extruder_0"
-        },
-        "first_start_actions": [ "DiscoverUM3Action" ],
-        "supported_actions": [ "DiscoverUM3Action" ],
+        "machine_extruder_trains": { "0": "ninja710_extruder_0" },
         "supports_usb_connection": false,
         "weight": -1,
         "bom_numbers": [777777]
@@ -61,21 +56,8 @@
         "gantry_height": { "value": "60" },
         "machine_extruder_count": { "default_value": 1 },
         "extruder_prime_pos_abs": { "default_value": true },
-        "machine_start_gcode":
-        {
-            "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0}" 
-        },
-        "machine_end_gcode":
-        {
-            "default_value": "END_PRINT"
-        },
         "prime_blob_enable": { "enabled": true, "default_value": false },
-
-        "speed_travel":
-        {
-            "maximum_value": "300",
-            "value": "180"
-        },
+        "speed_travel": { "maximum_value": "300", "value": "180" },
 
         "acceleration_enabled": { "value": "True" },
         "acceleration_layer_0": { "value": "2000" },
