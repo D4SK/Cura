@@ -2,26 +2,41 @@
     "version": 2,
     "name": "Ninja330",
     "inherits": "ninja_base",
-    "metadata": {
-        "preferred_variant_name": "AA 0.4",
-        "preferred_quality_type": "normal",
-        "machine_extruder_trains": { "0": "ninja330_extruder_0", "1": "ninja330_extruder_1" },
-        "weight": -1,
-        "bom_numbers": [888888],
+    "metadata":
+    {
         "platform": "ninja330_platform.stl",
-        "nozzle_offsetting_for_disallowed_areas": false
+        "bom_numbers": [
+            888888
+        ],
+        "machine_extruder_trains":
+        {
+            "0": "ninja330_extruder_0",
+            "1": "ninja330_extruder_1"
+        },
+        "nozzle_offsetting_for_disallowed_areas": false,
+        "preferred_quality_type": "normal",
+        "preferred_variant_name": "AA 0.4",
+        "weight": -1
     },
-    "overrides": {
-        "machine_name": { "default_value": "Ninja330" },
-        "machine_width": { "default_value": 330 },
-        "machine_depth": { "default_value": 255 },
-        "machine_height": { "default_value": 310 },
-        "machine_extruder_count": { "default_value": 2 },
-        "machine_heated_build_volume": { "default_value": true },
+    "overrides":
+    {
         "gantry_height": { "value": "60" },
-        "machine_head_with_fans_polygon": { "default_value": [[ -41.9, -45.8 ], [ -41.9, 33.9 ], [ 59.9, 33.9 ], [ 59.9, -45.8 ]] },
         "idex_mode": { "enabled": true },
-        "machine_disallowed_areas": { "value":
-        "([[[-8, machine_depth/2], [-8, machine_depth/2-7.5], [8, machine_depth/2-7.5], [8, machine_depth/2]]] if (idex_mode != 'off' or (extruders_enabled_count == 1 and wall_0_extruder_nr == 0)) else []) +         ([[[135-8, 0], [135-8, 7.5], [135+8, 7.5], [135+8, 0]],    [[-135-8, 0], [-135-8, 7.5], [-135+8,7.5], [-135+8, 0]],    [[-machine_width/2, 0], [-machine_width/2, -machine_depth/2], [machine_width/2, -machine_depth/2], [machine_width/2 ,0]]]    if idex_mode == 'duplicate' else          [[[135-8, machine_depth/2], [135-8, machine_depth/2-7.5], [135+8, machine_depth/2-7.5], [135+8, machine_depth/2]],    [[-135-8, machine_depth/2], [-135-8, machine_depth/2-7.5], [-135+8, machine_depth/2-7.5], [-135+8, machine_depth/2]],    [[-machine_width/2, 45/2], [-machine_width/2, -machine_depth/2], [machine_width/2, -machine_depth/2], [machine_width/2, 45/2]]]    if idex_mode == 'mirror' else          ([[[135-8,-machine_depth/2], [135-8,-machine_depth/2+7.5], [135+8,-machine_depth/2+7.5], [135+8,-machine_depth/2]],    [[-135-8,-machine_depth/2], [-135-8,-machine_depth/2+7.5], [-135+8,-machine_depth/2+7.5], [-135+8,-machine_depth/2]]]    if (extruders_enabled_count == 1 and wall_0_extruder_nr == 0) else []) +         ([[[-machine_width/2, machine_depth/2-20], [-machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2-20]]]    if (wall_0_extruder_nr == 0 or extruders_enabled_count > 1) else []) +          ([[[-machine_width/2,-machine_depth/2+20], [-machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2+20]]]    if (wall_0_extruder_nr == 1 or extruders_enabled_count > 1) else []))" }
+        "machine_depth": { "default_value": 255 },
+        "machine_disallowed_areas": { "value": "([[[-8, machine_depth/2], [-8, machine_depth/2-7.5], [8, machine_depth/2-7.5], [8, machine_depth/2]]] if (idex_mode != 'off' or (extruders_enabled_count == 1 and wall_0_extruder_nr == 0)) else []) +         ([[[135-8, 0], [135-8, 7.5], [135+8, 7.5], [135+8, 0]],    [[-135-8, 0], [-135-8, 7.5], [-135+8,7.5], [-135+8, 0]],    [[-machine_width/2, 0], [-machine_width/2, -machine_depth/2], [machine_width/2, -machine_depth/2], [machine_width/2 ,0]]]    if idex_mode == 'duplicate' else          [[[135-8, machine_depth/2], [135-8, machine_depth/2-7.5], [135+8, machine_depth/2-7.5], [135+8, machine_depth/2]],    [[-135-8, machine_depth/2], [-135-8, machine_depth/2-7.5], [-135+8, machine_depth/2-7.5], [-135+8, machine_depth/2]],    [[-machine_width/2, 45/2], [-machine_width/2, -machine_depth/2], [machine_width/2, -machine_depth/2], [machine_width/2, 45/2]]]    if idex_mode == 'mirror' else          ([[[135-8,-machine_depth/2], [135-8,-machine_depth/2+7.5], [135+8,-machine_depth/2+7.5], [135+8,-machine_depth/2]],    [[-135-8,-machine_depth/2], [-135-8,-machine_depth/2+7.5], [-135+8,-machine_depth/2+7.5], [-135+8,-machine_depth/2]]]    if (extruders_enabled_count == 1 and wall_0_extruder_nr == 0) else []) +         ([[[-machine_width/2, machine_depth/2-20], [-machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2-20]]]    if (wall_0_extruder_nr == 0 or extruders_enabled_count > 1) else []) +          ([[[-machine_width/2,-machine_depth/2+20], [-machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2+20]]]    if (wall_0_extruder_nr == 1 or extruders_enabled_count > 1) else []))" },
+        "machine_extruder_count": { "default_value": 2 },
+        "machine_head_with_fans_polygon":
+        {
+            "default_value": [
+                [-41.9, -45.8],
+                [-41.9, 33.9],
+                [59.9, 33.9],
+                [59.9, -45.8]
+            ]
+        },
+        "machine_heated_build_volume": { "default_value": true },
+        "machine_height": { "default_value": 310 },
+        "machine_name": { "default_value": "Ninja330" },
+        "machine_width": { "default_value": 330 }
     }
 }
