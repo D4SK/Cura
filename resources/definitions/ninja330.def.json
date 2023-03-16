@@ -3,6 +3,7 @@
     "name": "Ninja330",
     "inherits": "ninja_base",
     "metadata": {
+        "visible": true,
         "preferred_variant_name": "AA 0.4",
         "preferred_quality_type": "normal",
         "machine_extruder_trains": { "0": "ninja330_extruder_0", "1": "ninja330_extruder_1" },

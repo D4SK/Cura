@@ -6,7 +6,7 @@
     "metadata": {
         "author": "Ninja3D",
         "manufacturer": "Ninja3D",
-        "visible": true,
+        "visible": false,
         "file_formats": "application/x-ufp;text/x-gcode",
         "platform_offset": [0, 0, 0],
         "has_machine_quality": true,
