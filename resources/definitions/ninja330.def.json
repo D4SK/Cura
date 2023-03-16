@@ -2,7 +2,8 @@
     "version": 2,
     "name": "Ninja330",
     "inherits": "ninja_base",
-    "metadata": {
+    "metadata":
+    {
         "visible": true,
         "platform": "ninja330_platform.stl",
         "bom_numbers": [

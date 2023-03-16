@@ -2,33 +2,44 @@
     "version": 2,
     "name": "Ninja710",
     "inherits": "ninja_base",
-    "metadata": {
+    "metadata":
+    {
         "visible": true,
-        "has_variants": false,
-        "has_variant_buildplates": false,
+        "bom_numbers": [
+            777777
+        ],
         "has_machine_quality": false,
         "has_materials": false,
-        "preferred_quality_type": "normal",
+        "has_variant_buildplates": false,
+        "has_variants": false,
         "machine_extruder_trains": { "0": "ninja710_extruder_0" },
-        "weight": -1,
-        "bom_numbers": [777777]
+        "preferred_quality_type": "normal",
+        "weight": -1
     },
-    "overrides": {
-        "machine_name": { "default_value": "Ninja710" },
-        "machine_width": { "default_value": 705 },
-        "machine_depth": { "default_value": 340 },
-        "machine_height": { "default_value": 349 },
-        "machine_extruder_count": { "default_value": 1 },
-        "machine_heated_build_volume": { "default_value": false },
-        "gantry_height": { "value": "60" },
-        "machine_head_with_fans_polygon": { "default_value": [[ -41.9, -45.8 ], [ -41.9, 33.9 ], [ 59.9, 33.9 ], [ 59.9, -45.8 ]] },
-        "idex_mode": { "enabled": false },
-
-        "jerk_print": { "value": "6" },
-        "jerk_travel": { "value": "6"},
+    "overrides":
+    {
+        "acceleration_layer_0": { "value": "2000" },
         "acceleration_print": { "value": "3000" },
         "acceleration_travel": { "value": "50000" },
-        "acceleration_layer_0": { "value": "2000" },
+        "gantry_height": { "value": "60" },
+        "idex_mode": { "enabled": false },
+        "jerk_print": { "value": "6" },
+        "jerk_travel": { "value": "6" },
+        "machine_depth": { "default_value": 340 },
+        "machine_extruder_count": { "default_value": 1 },
+        "machine_head_with_fans_polygon":
+        {
+            "default_value": [
+                [-41.9, -45.8],
+                [-41.9, 33.9],
+                [59.9, 33.9],
+                [59.9, -45.8]
+            ]
+        },
+        "machine_heated_build_volume": { "default_value": false },
+        "machine_height": { "default_value": 349 },
+        "machine_name": { "default_value": "Ninja710" },
+        "machine_width": { "default_value": 705 },
         "speed_print": { "value": "80" },
         "speed_travel": { "value": "150" }
     }
