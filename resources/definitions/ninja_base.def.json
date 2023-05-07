@@ -298,12 +298,12 @@
         },
         "support_angle": { "value": "50" },
         "support_bottom_distance": { "value": "support_z_distance" },
+        "support_enable": { "value": "True" },
         "support_pattern": { "value": "'zigzag'" },
         "support_top_distance": { "value": "support_z_distance" },
         "support_use_towers": { "value": "False" },
         "support_xy_distance": { "value": "wall_line_width * 1.5" },
         "support_xy_distance_overhang": { "value": "wall_line_width_0" },
-        "support_enable": { "value": "True" },
         "support_z_distance": { "value": "layer_height if support_extruder_nr != wall_x_extruder_nr else 0" },
         "switch_extruder_prime_speed":
         {

@@ -2,15 +2,16 @@
     "version": 2,
     "name": "Extruder 2",
     "inherits": "fdmextruder",
-    "metadata": {
+    "metadata":
+    {
         "machine": "ninja330",
         "position": "1"
     },
-
-    "overrides": {
+    "overrides":
+    {
         "extruder_nr": { "default_value": 1 },
+        "machine_extruder_end_code": { "default_value": "M104 S{material_standby_temperature}" },
         "machine_nozzle_size": { "default_value": 0.4 },
-        "material_diameter": { "default_value": 1.75 },
-        "machine_extruder_end_code": { "default_value": "M104 S{material_standby_temperature}" }
+        "material_diameter": { "default_value": 1.75 }
     }
 }
