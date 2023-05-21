@@ -234,7 +234,7 @@
             "maximum_value_warning": "180",
             "value": "160"
         },
-        "skin_overlap": { "value": "20" },
+        "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
         "speed_infill":
         {
             "maximum_value_warning": "410",
