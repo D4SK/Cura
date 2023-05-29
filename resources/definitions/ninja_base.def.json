@@ -138,8 +138,8 @@
         "layer_start_x": { "value": "sum(extruderValues('machine_extruder_start_pos_x')) / len(extruderValues('machine_extruder_start_pos_x'))" },
         "layer_start_y": { "value": "sum(extruderValues('machine_extruder_start_pos_y')) / len(extruderValues('machine_extruder_start_pos_y'))" },
         "machine_acceleration": { "value": 50000 },
-        "machine_end_gcode": { "value": "END_PRINT" },
-        "machine_extruder_count": { "value": 1 },
+        "machine_end_gcode": { "default_value": "END_PRINT" },
+        "machine_extruder_count": { "default_value": 1 },
         "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
         "machine_head_with_fans_polygon":
         {
@@ -158,7 +158,7 @@
         "machine_min_cool_heat_time_window": { "value": "15" },
         "machine_nozzle_cool_down_speed": { "value": 1 },
         "machine_nozzle_heat_up_speed": { "value": 5 },
-        "machine_start_gcode": { "value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} T={initial_extruder_nr} IDEX_MODE={idex_mode}" },
+        "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} T={initial_extruder_nr} IDEX_MODE={idex_mode}" },
         "material_bed_temperature":
         {
             "maximum_value_warning": "125",
@@ -212,11 +212,7 @@
             "value": false
         },
         "retraction_amount": { "value": "2.5" },
-        "retraction_combing":
-        {
-            "default_value": "no_outer_surfaces",
-            "value": "no_outer_surfaces"
-        },
+        "retraction_combing": { "default_value": "no_outer_surfaces" },
         "retraction_count_max": { "value": "5" },
         "retraction_extrusion_window": { "value": "1" },
         "retraction_hop": { "value": "0.3" },
