@@ -212,7 +212,11 @@
             "value": false
         },
         "retraction_amount": { "value": "2.5" },
-        "retraction_combing": { "default_value": "no_outer_surfaces", "value": "no_outer_surfaces" },
+        "retraction_combing":
+        {
+            "default_value": "no_outer_surfaces",
+            "value": "no_outer_surfaces"
+        },
         "retraction_count_max": { "value": "5" },
         "retraction_extrusion_window": { "value": "1" },
         "retraction_hop": { "value": "0.3" },
