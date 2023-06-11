@@ -98,6 +98,16 @@
         "coasting_enable": { "value": "True" },
         "coasting_speed": { "value": 100 },
         "coasting_volume": { "value": "0.1" },
+        "connect_infill_polygons":
+        {
+            "default_value": "True",
+            "value": "True"
+        },
+        "connect_skin_polygons":
+        {
+            "default_value": "True",
+            "value": "True"
+        },
         "cool_fan_full_at_height": { "value": "layer_height_0 + 4 * layer_height" },
         "cool_fan_speed": { "value": "50" },
         "cool_fan_speed_max": { "value": "100" },
@@ -119,11 +129,6 @@
         "infill_line_width": { "value": "round(line_width * 0.46 / 0.44, 2)" },
         "infill_overlap": { "value": "0" },
         "infill_pattern": { "value": "'grid'" },
-        "connect_infill_polygons":
-        {
-            "value": "True",
-            "default_value" : "True"
-        },
         "infill_wipe_dist": { "value": "0" },
         "initial_layer_line_width_factor": { "value": "120" },
         "jerk_enabled": { "value": "True" },
@@ -244,8 +249,8 @@
             "maximum_value_warning": "180",
             "value": "160"
         },
-        "skin_overlap": { "value": "0" },
         "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
+        "skin_overlap": { "value": "0" },
         "speed_infill":
         {
             "maximum_value_warning": "410",
@@ -328,11 +333,6 @@
             "value": "100"
         },
         "top_layers": { "value": "6" },
-        "connect_skin_polygons":
-        {
-            "value": "True",
-            "default_value": "True"
-        },
         "travel_avoid_distance": { "value": "2" },
         "travel_avoid_supports": { "value": "False" },
         "wall_0_inset": { "value": "0" },
