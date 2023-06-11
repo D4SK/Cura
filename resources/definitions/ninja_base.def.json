@@ -53,6 +53,11 @@
             "maximum_value_warning": "70000",
             "value": "acceleration_print"
         },
+        "acceleration_support_infill":
+        {
+            "maximum_value_warning": "70000",
+            "value": "acceleration_print"
+        },
         "acceleration_support_interface":
         {
             "maximum_value_warning": "70000",
@@ -81,7 +86,7 @@
         "acceleration_wall_0":
         {
             "maximum_value_warning": "70000",
-            "value": "math.ceil(acceleration_wall * 35000 / 40000)"
+            "value": "acceleration_wall"
         },
         "acceleration_wall_x":
         {
@@ -113,16 +118,21 @@
         "infill_enable_travel_optimization": { "value": "True" },
         "infill_line_width": { "value": "round(line_width * 0.46 / 0.44, 2)" },
         "infill_overlap": { "value": "0" },
-        "infill_pattern": { "value": "'gyroid'" },
+        "infill_pattern": { "value": "'grid'" },
+        "connect_infill_polygons":
+        {
+            "value": "True",
+            "default_value" : "True"
+        },
         "infill_wipe_dist": { "value": "0" },
         "initial_layer_line_width_factor": { "value": "120" },
         "jerk_enabled": { "value": "True" },
-        "jerk_layer_0": { "value": "math.ceil(jerk_print * 3 / 30)" },
+        "jerk_layer_0": { "value": "math.ceil(jerk_print * 3 / 25)" },
         "jerk_prime_tower": { "value": "math.ceil(jerk_print * 15 / 25)" },
         "jerk_print": { "value": "25" },
-        "jerk_support": { "value": "math.ceil(jerk_print * 15 / 25)" },
+        "jerk_support": { "value": "jerk_print" },
         "jerk_support_interface": { "value": "jerk_topbottom" },
-        "jerk_topbottom": { "value": "math.ceil(jerk_print * 5 / 25)" },
+        "jerk_topbottom": { "value": "math.ceil(jerk_print * 15 / 25)" },
         "jerk_travel":
         {
             "maximum_value_warning": "70",
@@ -133,8 +143,8 @@
             "maximum_value_warning": "70",
             "value": "jerk_travel"
         },
-        "jerk_wall": { "value": "math.ceil(jerk_print * 10 / 25)" },
-        "jerk_wall_0": { "value": "math.ceil(jerk_wall * 5 / 10)" },
+        "jerk_wall": { "value": "jerk_print" },
+        "jerk_wall_0": { "value": "jerk_wall" },
         "layer_start_x": { "value": "sum(extruderValues('machine_extruder_start_pos_x')) / len(extruderValues('machine_extruder_start_pos_x'))" },
         "layer_start_y": { "value": "sum(extruderValues('machine_extruder_start_pos_y')) / len(extruderValues('machine_extruder_start_pos_y'))" },
         "machine_acceleration": { "value": 50000 },
@@ -155,9 +165,9 @@
         "machine_max_feedrate_x": { "value": 5000 },
         "machine_max_feedrate_y": { "value": 5000 },
         "machine_max_feedrate_z": { "value": 100 },
-        "machine_min_cool_heat_time_window": { "value": "15" },
+        "machine_min_cool_heat_time_window": { "value": 1 },
         "machine_nozzle_cool_down_speed": { "value": 1 },
-        "machine_nozzle_heat_up_speed": { "value": 5 },
+        "machine_nozzle_heat_up_speed": { "value": 1000000 },
         "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} T={initial_extruder_nr} IDEX_MODE={idex_mode}" },
         "material_bed_temperature":
         {
@@ -227,13 +237,14 @@
         "retraction_retract_speed":
         {
             "maximum_value_warning": "180",
-            "value": "160"
+            "value": "100"
         },
         "retraction_speed":
         {
             "maximum_value_warning": "180",
             "value": "160"
         },
+        "skin_overlap": { "value": "0" },
         "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
         "speed_infill":
         {
@@ -243,7 +254,7 @@
         "speed_layer_0":
         {
             "maximum_value_warning": "160",
-            "value": "80"
+            "value": "100"
         },
         "speed_prime_tower":
         {
@@ -317,6 +328,11 @@
             "value": "100"
         },
         "top_layers": { "value": "6" },
+        "connect_skin_polygons":
+        {
+            "value": "True",
+            "default_value": "True"
+        },
         "travel_avoid_distance": { "value": "2" },
         "travel_avoid_supports": { "value": "False" },
         "wall_0_inset": { "value": "0" },
