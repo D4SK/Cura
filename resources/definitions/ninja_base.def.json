@@ -27,7 +27,7 @@
     },
     "overrides":
     {
-        "acceleration_enabled": { "value": "True" },
+        "acceleration_enabled": { "value": true },
         "acceleration_infill":
         {
             "maximum_value_warning": "70000",
@@ -95,19 +95,10 @@
         },
         "bottom_layers": { "value": "6" },
         "brim_width": { "value": "3" },
-        "coasting_enable": { "value": "True" },
+        "coasting_enable": { "value": true },
         "coasting_speed": { "value": 100 },
-        "coasting_volume": { "value": "0.1" },
-        "connect_infill_polygons":
-        {
-            "default_value": "True",
-            "value": "True"
-        },
-        "connect_skin_polygons":
-        {
-            "default_value": "True",
-            "value": "True"
-        },
+        "coasting_volume": { "value": 0.05 },
+        "retraction_extra_prime_amount": { "value": 0.05 },
         "cool_fan_full_at_height": { "value": "layer_height_0 + 4 * layer_height" },
         "cool_fan_speed": { "value": "50" },
         "cool_fan_speed_max": { "value": "100" },
@@ -125,23 +116,23 @@
             "minimum_value": "0"
         },
         "gantry_height": { "value": "20" },
-        "infill_enable_travel_optimization": { "value": "True" },
+        "infill_enable_travel_optimization": { "value": true },
         "infill_line_width": { "value": "round(line_width * 0.46 / 0.44, 2)" },
         "infill_overlap": { "value": "0" },
         "infill_pattern": { "value": "'grid'" },
         "infill_wipe_dist": { "value": "0" },
         "initial_layer_line_width_factor": { "value": "120" },
-        "jerk_enabled": { "value": "True" },
-        "jerk_layer_0": { "value": "math.ceil(jerk_print * 3 / 25)" },
-        "jerk_prime_tower": { "value": "math.ceil(jerk_print * 15 / 25)" },
-        "jerk_print": { "value": "25" },
+        "jerk_enabled": { "value": true },
+        "jerk_layer_0": { "value": "math.ceil(jerk_print * 5 / 40)" },
+        "jerk_prime_tower": { "value": "jerk_print" },
+        "jerk_print": { "value": "40" },
         "jerk_support": { "value": "jerk_print" },
         "jerk_support_interface": { "value": "jerk_topbottom" },
-        "jerk_topbottom": { "value": "math.ceil(jerk_print * 15 / 25)" },
+        "jerk_topbottom": { "value": "jerk_print" },
         "jerk_travel":
         {
             "maximum_value_warning": "70",
-            "value": "50"
+            "value": "40"
         },
         "jerk_travel_layer_0":
         {
@@ -155,7 +146,7 @@
         "machine_acceleration": { "value": 50000 },
         "machine_end_gcode": { "default_value": "END_PRINT" },
         "machine_extruder_count": { "default_value": 1 },
-        "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
+        "machine_gcode_flavor": { "default_value": "'RepRap (Marlin/Sprinter)'" },
         "machine_head_with_fans_polygon":
         {
             "value": [
@@ -173,7 +164,7 @@
         "machine_min_cool_heat_time_window": { "value": 1 },
         "machine_nozzle_cool_down_speed": { "value": 1 },
         "machine_nozzle_heat_up_speed": { "value": 1000000 },
-        "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} T={initial_extruder_nr} IDEX_MODE={idex_mode}" },
+        "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} T={initial_extruder_nr} DUPLICATION_MODE={duplication_mode}" },
         "material_bed_temperature":
         {
             "maximum_value_warning": "125",
@@ -207,7 +198,7 @@
             "value": "0.005"
         },
         "multiple_mesh_overlap": { "value": "0" },
-        "optimize_wall_printing_order": { "value": "True" },
+        "optimize_wall_printing_order": { "value": true },
         "prime_blob_enable": { "value": false },
         "prime_tower_enable": { "value": "extruders_enabled_count > 1" },
         "raft_airgap": { "value": "0" },
@@ -226,13 +217,16 @@
             "enabled": false,
             "value": false
         },
+        "wipe_retraction_amount": { "value": "1.2" },
+        "wipe_retraction_retract_speed": { "value": "40" },
+        "wipe_retraction_prime_speed": { "value": "120" },
         "retraction_amount": { "value": "2.5" },
-        "retraction_combing": { "default_value": "no_outer_surfaces" },
+        "retraction_combing": { "value": "'no_outer_surfaces'" },
         "retraction_count_max": { "value": "5" },
         "retraction_extrusion_window": { "value": "1" },
         "retraction_hop": { "value": "0.3" },
-        "retraction_hop_enabled": { "value": "False" },
-        "retraction_hop_only_when_collides": { "value": "True" },
+        "retraction_hop_enabled": { "value": false },
+        "retraction_hop_only_when_collides": { "value": true },
         "retraction_min_travel": { "value": "5" },
         "retraction_prime_speed":
         {
@@ -314,10 +308,10 @@
         },
         "support_angle": { "value": "50" },
         "support_bottom_distance": { "value": "support_z_distance" },
-        "support_enable": { "value": "True" },
+        "support_enable": { "value": true },
         "support_pattern": { "value": "'zigzag'" },
         "support_top_distance": { "value": "support_z_distance" },
-        "support_use_towers": { "value": "False" },
+        "support_use_towers": { "value": false },
         "support_xy_distance": { "value": "wall_line_width * 1.5" },
         "support_xy_distance_overhang": { "value": "wall_line_width_0" },
         "support_z_distance": { "value": "layer_height if support_extruder_nr != wall_x_extruder_nr else 0" },
@@ -332,9 +326,14 @@
             "maximum_value_warning": "170",
             "value": "100"
         },
+        "zig_zaggify_infill": { "value": true },
+        "connect_infill_polygons": { "value": true },
+        "connect_skin_polygons": { "value": true },
+        "roofing_pattern": { "value": "'zigzag'" },
+        "top_bottom_pattern": { "value": "'zigzag'" },
         "top_layers": { "value": "6" },
         "travel_avoid_distance": { "value": "2" },
-        "travel_avoid_supports": { "value": "False" },
+        "travel_avoid_supports": { "value": true },
         "wall_0_inset": { "value": "0" },
         "wall_line_count": { "value": "3" },
         "wall_line_width_x": { "value": "line_width" }

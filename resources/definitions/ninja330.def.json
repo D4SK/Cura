@@ -22,9 +22,9 @@
     "overrides":
     {
         "gantry_height": { "value": "60" },
-        "idex_mode": { "enabled": true },
+        "duplication_mode": { "enabled": true },
         "machine_depth": { "default_value": 255 },
-        "machine_disallowed_areas": { "value": "([[[-8, machine_depth/2], [-8, machine_depth/2-7.5], [8, machine_depth/2-7.5], [8, machine_depth/2]]] if (idex_mode != 'off' or (extruders_enabled_count == 1 and wall_0_extruder_nr == 0)) else []) +         ([[[135-8, 0], [135-8, 7.5], [135+8, 7.5], [135+8, 0]],    [[-135-8, 0], [-135-8, 7.5], [-135+8,7.5], [-135+8, 0]],    [[-machine_width/2, 0], [-machine_width/2, -machine_depth/2], [machine_width/2, -machine_depth/2], [machine_width/2 ,0]]]    if idex_mode == 'duplicate' else          [[[135-8, machine_depth/2], [135-8, machine_depth/2-7.5], [135+8, machine_depth/2-7.5], [135+8, machine_depth/2]],    [[-135-8, machine_depth/2], [-135-8, machine_depth/2-7.5], [-135+8, machine_depth/2-7.5], [-135+8, machine_depth/2]],    [[-machine_width/2, 45/2], [-machine_width/2, -machine_depth/2], [machine_width/2, -machine_depth/2], [machine_width/2, 45/2]]]    if idex_mode == 'mirror' else          ([[[135-8,-machine_depth/2], [135-8,-machine_depth/2+7.5], [135+8,-machine_depth/2+7.5], [135+8,-machine_depth/2]],    [[-135-8,-machine_depth/2], [-135-8,-machine_depth/2+7.5], [-135+8,-machine_depth/2+7.5], [-135+8,-machine_depth/2]]]    if (extruders_enabled_count == 1 and wall_0_extruder_nr == 0) else []) +         ([[[-machine_width/2, machine_depth/2-20], [-machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2-20]]]    if (wall_0_extruder_nr == 0 or extruders_enabled_count > 1) else []) +          ([[[-machine_width/2,-machine_depth/2+20], [-machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2+20]]]    if (wall_0_extruder_nr == 1 or extruders_enabled_count > 1) else []))" },
+        "machine_disallowed_areas": { "value": "([[[-8, machine_depth/2], [-8, machine_depth/2-7.5], [8, machine_depth/2-7.5], [8, machine_depth/2]]] if (duplication_mode or (extruders_enabled_count == 1 and wall_0_extruder_nr == 0)) else []) +         ([[[135-8, 0], [135-8, 7.5], [135+8, 7.5], [135+8, 0]],    [[-135-8, 0], [-135-8, 7.5], [-135+8,7.5], [-135+8, 0]],    [[-machine_width/2, 0], [-machine_width/2, -machine_depth/2], [machine_width/2, -machine_depth/2], [machine_width/2 ,0]]]    if duplication_mode else          ([[[135-8,-machine_depth/2], [135-8,-machine_depth/2+7.5], [135+8,-machine_depth/2+7.5], [135+8,-machine_depth/2]],    [[-135-8,-machine_depth/2], [-135-8,-machine_depth/2+7.5], [-135+8,-machine_depth/2+7.5], [-135+8,-machine_depth/2]]]    if (extruders_enabled_count == 1 and wall_0_extruder_nr == 0) else []) +         ([[[-machine_width/2, machine_depth/2-20], [-machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2], [machine_width/2, machine_depth/2-20]]]    if (wall_0_extruder_nr == 0 or extruders_enabled_count > 1) else []) +          ([[[-machine_width/2,-machine_depth/2+20], [-machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2], [machine_width/2,-machine_depth/2+20]]]    if (wall_0_extruder_nr == 1 or extruders_enabled_count > 1) else []))" },
         "machine_extruder_count": { "value": 2 },
         "machine_head_with_fans_polygon":
         {
@@ -35,9 +35,26 @@
                 [59.9, -45.8]
             ]
         },
+        "machine_max_acceleration_e": { "default_value": 100000 },
+        "machine_acceleration": { "default_value": 50000 },
+        "machine_max_jerk_xy": { "default_value": 25 },
+        "machine_max_jerk_z": { "default_value": 4 },
+        "machine_max_jerk_e": { "default_value": 40 },
         "machine_heated_build_volume": { "default_value": true },
         "machine_height": { "default_value": 310 },
         "machine_name": { "default_value": "Ninja330" },
-        "machine_width": { "default_value": 330 }
+        "machine_width": { "default_value": 330 },
+        "prime_tower_position_x":
+        {
+            "value": "machine_width - max(extruderValue(skirt_brim_extruder_nr, 'brim_width') * extruderValue(skirt_brim_extruder_nr, 'initial_layer_line_width_factor') / 100 if adhesion_type == 'brim' or (prime_tower_brim_enable and adhesion_type != 'raft') else (extruderValue(adhesion_extruder_nr, 'raft_margin') if adhesion_type == 'raft' else (extruderValue(skirt_brim_extruder_nr, 'skirt_gap') if adhesion_type == 'skirt' else 0)), max(extruderValues('travel_avoid_distance'))) - max(extruderValues('support_offset')) - sum(extruderValues('skirt_brim_line_width')) * extruderValue(skirt_brim_extruder_nr, 'initial_layer_line_width_factor') / 100 - (resolveOrValue('draft_shield_dist') if resolveOrValue('draft_shield_enabled') else 0) - max(map(abs, extruderValues('machine_nozzle_offset_x'))) - 1",
+            "maximum_value": "machine_width / 2 if machine_center_is_zero else machine_width",
+            "minimum_value": "resolveOrValue('prime_tower_size') - machine_width / 2 if machine_center_is_zero else resolveOrValue('prime_tower_size')"
+        },
+        "prime_tower_position_y":
+        {
+            "value": "machine_depth - 30 - prime_tower_size - max(extruderValue(skirt_brim_extruder_nr, 'brim_width') * extruderValue(skirt_brim_extruder_nr, 'initial_layer_line_width_factor') / 100 if adhesion_type == 'brim' or (prime_tower_brim_enable and adhesion_type != 'raft') else (extruderValue(adhesion_extruder_nr, 'raft_margin') if adhesion_type == 'raft' else (extruderValue(skirt_brim_extruder_nr, 'skirt_gap') if adhesion_type == 'skirt' else 0)), max(extruderValues('travel_avoid_distance'))) - max(extruderValues('support_offset')) - sum(extruderValues('skirt_brim_line_width')) * extruderValue(skirt_brim_extruder_nr, 'initial_layer_line_width_factor') / 100 - (resolveOrValue('draft_shield_dist') if resolveOrValue('draft_shield_enabled') else 0) - max(map(abs, extruderValues('machine_nozzle_offset_y'))) - 3",
+            "maximum_value": "machine_depth / 2 - resolveOrValue('prime_tower_size') if machine_center_is_zero else machine_depth - resolveOrValue('prime_tower_size')",
+            "minimum_value": "machine_depth / -2 if machine_center_is_zero else 0"
+        }
     }
 }
