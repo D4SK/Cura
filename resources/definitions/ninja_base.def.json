@@ -98,7 +98,8 @@
         "coasting_enable": { "value": true },
         "coasting_speed": { "value": 100 },
         "coasting_volume": { "value": 0.05 },
-        "retraction_extra_prime_amount": { "value": 0.05 },
+        "connect_infill_polygons": { "value": true },
+        "connect_skin_polygons": { "value": true },
         "cool_fan_full_at_height": { "value": "layer_height_0 + 4 * layer_height" },
         "cool_fan_speed": { "value": "50" },
         "cool_fan_speed_max": { "value": "100" },
@@ -217,12 +218,10 @@
             "enabled": false,
             "value": false
         },
-        "wipe_retraction_amount": { "value": "1.2" },
-        "wipe_retraction_retract_speed": { "value": "40" },
-        "wipe_retraction_prime_speed": { "value": "120" },
         "retraction_amount": { "value": "2.5" },
         "retraction_combing": { "value": "'no_outer_surfaces'" },
         "retraction_count_max": { "value": "5" },
+        "retraction_extra_prime_amount": { "value": 0.05 },
         "retraction_extrusion_window": { "value": "1" },
         "retraction_hop": { "value": "0.3" },
         "retraction_hop_enabled": { "value": false },
@@ -243,6 +242,7 @@
             "maximum_value_warning": "180",
             "value": "160"
         },
+        "roofing_pattern": { "value": "'zigzag'" },
         "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
         "skin_overlap": { "value": "5 if top_bottom_pattern != 'concentric' else 0" },
         "speed_infill":
@@ -326,16 +326,16 @@
             "maximum_value_warning": "170",
             "value": "100"
         },
-        "zig_zaggify_infill": { "value": true },
-        "connect_infill_polygons": { "value": true },
-        "connect_skin_polygons": { "value": true },
-        "roofing_pattern": { "value": "'zigzag'" },
         "top_bottom_pattern": { "value": "'zigzag'" },
         "top_layers": { "value": "6" },
         "travel_avoid_distance": { "value": "2" },
         "travel_avoid_supports": { "value": true },
         "wall_0_inset": { "value": "0" },
         "wall_line_count": { "value": "3" },
-        "wall_line_width_x": { "value": "line_width" }
+        "wall_line_width_x": { "value": "line_width" },
+        "wipe_retraction_amount": { "value": "1.2" },
+        "wipe_retraction_prime_speed": { "value": "120" },
+        "wipe_retraction_retract_speed": { "value": "40" },
+        "zig_zaggify_infill": { "value": true }
     }
 }
