@@ -132,12 +132,12 @@
         "jerk_topbottom": { "value": "jerk_print" },
         "jerk_travel":
         {
-            "maximum_value_warning": "70",
+            "maximum_value_warning": "100",
             "value": "40"
         },
         "jerk_travel_layer_0":
         {
-            "maximum_value_warning": "70",
+            "maximum_value_warning": "100",
             "value": "jerk_travel"
         },
         "jerk_wall": { "value": "jerk_print" },
