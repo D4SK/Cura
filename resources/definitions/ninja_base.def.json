@@ -124,16 +124,20 @@
         "infill_wipe_dist": { "value": "0" },
         "initial_layer_line_width_factor": { "value": "120" },
         "jerk_enabled": { "value": true },
-        "jerk_layer_0": { "value": "math.ceil(jerk_print * 5 / 40)" },
+        "jerk_layer_0": { "value": "math.ceil(jerk_print * 5 / 50)" },
         "jerk_prime_tower": { "value": "jerk_print" },
-        "jerk_print": { "value": "40" },
+        "jerk_print":
+        {
+            "maximum_value_warning": "100",
+            "value": "50"
+        },
         "jerk_support": { "value": "jerk_print" },
         "jerk_support_interface": { "value": "jerk_topbottom" },
         "jerk_topbottom": { "value": "jerk_print" },
         "jerk_travel":
         {
             "maximum_value_warning": "100",
-            "value": "40"
+            "value": "50"
         },
         "jerk_travel_layer_0":
         {
@@ -162,10 +166,10 @@
         "machine_max_feedrate_x": { "value": 5000 },
         "machine_max_feedrate_y": { "value": 5000 },
         "machine_max_feedrate_z": { "value": 100 },
-        "machine_min_cool_heat_time_window": { "value": 1 },
-        "machine_nozzle_cool_down_speed": { "value": 1 },
+        "machine_min_cool_heat_time_window": { "value": 0.001 },
+        "machine_nozzle_cool_down_speed": { "value": 100000 },
         "machine_nozzle_heat_up_speed": { "value": 1000000 },
-        "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} T={initial_extruder_nr} DUPLICATION_MODE={duplication_mode}" },
+        "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} DUPLICATION_MODE={duplication_mode}" },
         "material_bed_temperature":
         {
             "maximum_value_warning": "125",
@@ -247,7 +251,7 @@
         "skin_overlap": { "value": "5 if top_bottom_pattern != 'concentric' else 0" },
         "speed_infill":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "speed_print"
         },
         "speed_layer_0":
@@ -257,28 +261,28 @@
         },
         "speed_prime_tower":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "speed_topbottom"
         },
         "speed_print":
         {
-            "maximum_value_warning": "410",
-            "value": "200"
+            "maximum_value_warning": "510",
+            "value": "250"
         },
         "speed_slowdown_layers": { "value": "1" },
         "speed_support":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "speed_print"
         },
         "speed_support_interface":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "speed_topbottom"
         },
         "speed_topbottom":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "speed_print"
         },
         "speed_travel":
@@ -293,17 +297,17 @@
         },
         "speed_wall":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "speed_print"
         },
         "speed_wall_0":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "round(speed_wall * 0.9, -1)"
         },
         "speed_wall_x":
         {
-            "maximum_value_warning": "410",
+            "maximum_value_warning": "510",
             "value": "speed_wall"
         },
         "support_angle": { "value": "50" },

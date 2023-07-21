@@ -37,7 +37,7 @@
         },
         "machine_max_acceleration_e": { "default_value": 100000 },
         "machine_acceleration": { "default_value": 50000 },
-        "machine_max_jerk_xy": { "default_value": 25 },
+        "machine_max_jerk_xy": { "default_value": 60 },
         "machine_max_jerk_z": { "default_value": 4 },
         "machine_max_jerk_e": { "default_value": 40 },
         "machine_heated_build_volume": { "default_value": true },
