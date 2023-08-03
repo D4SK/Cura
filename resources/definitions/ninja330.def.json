@@ -40,7 +40,7 @@
         "machine_height": { "default_value": 310 },
         "machine_max_acceleration_e": { "default_value": 100000 },
         "machine_max_jerk_e": { "default_value": 40 },
-        "machine_max_jerk_xy": { "default_value": 60 },
+        "machine_max_jerk_xy": { "default_value": 80 },
         "machine_max_jerk_z": { "default_value": 4 },
         "machine_name": { "default_value": "Ninja330" },
         "machine_width": { "default_value": 330 },
