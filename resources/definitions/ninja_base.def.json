@@ -46,7 +46,7 @@
         "acceleration_print":
         {
             "maximum_value_warning": "100000",
-            "value": "40000"
+            "value": "30000"
         },
         "acceleration_support":
         {
@@ -138,7 +138,7 @@
         "jerk_print":
         {
             "maximum_value_warning": "160",
-            "value": "80"
+            "value": "120"
         },
         "jerk_support":
         {
@@ -197,13 +197,13 @@
             ]
         },
         "machine_heated_bed": { "value": true },
-        "machine_max_feedrate_e": { "value": 200 },
+        "machine_max_feedrate_e": { "value": 350 },
         "machine_max_feedrate_x": { "value": 5000 },
         "machine_max_feedrate_y": { "value": 5000 },
         "machine_max_feedrate_z": { "value": 100 },
         "machine_min_cool_heat_time_window": { "value": 0.001 },
-        "machine_nozzle_cool_down_speed": { "value": 100000 },
-        "machine_nozzle_heat_up_speed": { "value": 1000000 },
+        "machine_nozzle_cool_down_speed": { "value": 2.17 },
+        "machine_nozzle_heat_up_speed": { "value": 12.65 },
         "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} DUPLICATION_MODE={duplication_mode}" },
         "material_bed_temperature":
         {
