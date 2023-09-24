@@ -3102,7 +3102,7 @@
                     "label": "Speed Mode",
                     "description": "The speed mode to use for printing.",
                     "type": "enum",
-                    "default_value": "normal",
+                    "default_value": "2",
                     "options":
                     {
                         "0":
@@ -3136,8 +3136,7 @@
                             "description": "Extreme speed mode. This mode is for experimental use only."
                         }
                     },
-                    "enabled": "machine_gcode_flavor != \"UltiGCode\"",
-                    "settable_per_mesh": false
+                    "settable_per_mesh": true
                 },
                 "speed_print":
                 {

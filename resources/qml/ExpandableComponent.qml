@@ -45,9 +45,6 @@ Item
     // How much spacing is needed around the contentItem
     property alias contentPadding: content.padding
 
-    // Adds a title to the content item
-    property alias contentHeaderTitle: contentHeader.headerTitle
-
     // How much spacing is needed for the contentItem by Y coordinate
     property var contentSpacingY: UM.Theme.getSize("narrow_margin").width
 
@@ -225,81 +222,11 @@ Item
             }
         }
 
-        ExpandableComponentHeader
-        {
-            id: contentHeader
-            headerTitle: ""
-            anchors
-            {
-                top: parent.top
-                right: parent.right
-                left: parent.left
-            }
-
-            MouseArea
-            {
-                id: dragRegion
-                cursorShape: Qt.SizeAllCursor
-                anchors
-                {
-                    top: parent.top
-                    bottom: parent.bottom
-                    left: parent.left
-                    right: contentHeader.xPosCloseButton
-                }
-                property var clickPos: Qt.point(0, 0)
-                property bool dragging: false
-                onPressed: (mouse) =>
-                {
-                    clickPos = Qt.point(mouse.x, mouse.y);
-                    dragging = true
-                }
-
-                onPositionChanged: (mouse) =>
-                {
-                    if(dragging)
-                    {
-                        var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y);
-                        if (delta.x !== 0 || delta.y !== 0)
-                        {
-                            contentContainer.trySetPosition(contentContainer.x + delta.x, contentContainer.y + delta.y);
-                        }
-                    }
-                }
-                onReleased: dragging = false
-
-
-                onDoubleClicked:
-                {
-                    dragging = false
-                    contentContainer.trySetPosition(0, 0);
-                }
-
-                Connections
-                {
-                    target: UM.Preferences
-                    function onPreferenceChanged(preference)
-                    {
-                        if
-                        (
-                            preference !== "general/window_height" &&
-                            preference !== "general/window_width" &&
-                            preference !== "general/window_state"
-                        )
-                        {
-                            return;
-                        }
-                        contentContainer.trySetPosition(contentContainer.x, contentContainer.y);
-                    }
-                }
-            }
-        }
-
         Control
         {
             id: content
 
-            anchors.top: contentHeader.bottom
+            anchors.top: contentContainer.top
             padding: UM.Theme.getSize("default_margin").width
 
             contentItem: Item {}
@@ -314,7 +241,7 @@ Item
         target: content.contentItem
         function onHeightChanged()
         {
-            contentContainer.height = contentHeader.height + content.height
+            contentContainer.height = content.height
         }
     }
 }

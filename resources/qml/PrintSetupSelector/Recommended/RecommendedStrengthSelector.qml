@@ -51,54 +51,38 @@ RecommendedSettingSection
         },
         RecommendedSettingItem
         {
-            settingName: catalog.i18nc("@action:label", "Infill Pattern")
-            tooltipText: catalog.i18nc("@label",
-            "The pattern of the infill material of the print:\n\nFor quick prints of non functional model choose line, zig zag or lightning infill.\n\nFor functional part not subjected to a lot of stress we recommend grid or triangle or tri hexagon.\n\nFor functional 3D prints which require high strength in multiple directions use cubic, cubic subdivision, quarter cubic, octet, and gyroid.")
-
-            settingControl: Cura.SingleSettingComboBox
+            settingName: catalog.i18nc("@action:label", "Walls")
+            tooltipText: catalog.i18nc("@label", "Defines the thickness of your part side walls.")
+            settingControl: Cura.SingleSettingTextField
             {
                 width: parent.width
-                settingName: "infill_pattern"
+                settingName: "wall_line_count"
                 updateAllExtruders: true
+                validator: UM.IntValidator {}
             }
         },
         RecommendedSettingItem
         {
-            settingName: catalog.i18nc("@action:label", "Outside Layers")
-            tooltipText: catalog.i18nc("@label", "Defines the thickness of your part side walls, roof and floor.")
-
-            settingControl: RowLayout
+            settingName: catalog.i18nc("@action:label", "Top Layers")
+            tooltipText: catalog.i18nc("@label", "Defines the thickness of your parts roof.")
+            settingControl: Cura.SingleSettingTextField
             {
-                anchors.fill: parent
-                spacing: UM.Theme.getSize("default_margin").width
-                UM.ComponentWithIcon
-                {
-                    Layout.fillWidth: true
-                    source: UM.Theme.getIcon("PrintWalls")
-
-                    Cura.SingleSettingTextField
-                    {
-                        width: parent.width
-                        settingName: "wall_line_count"
-                        updateAllExtruders: true
-                        validator: UM.FloatValidator {}
-                        unitText: catalog.i18nc("@label", "")
-                    }
-                }
-                UM.ComponentWithIcon
-                {
-                    Layout.fillWidth: true
-                    source: UM.Theme.getIcon("PrintTopBottom")
-
-                    Cura.SingleSettingTextField
-                    {
-                        width: parent.width
-                        settingName: "top_bottom_layers"
-                        updateAllExtruders: true
-                        validator: UM.FloatValidator {}
-                        unitText: catalog.i18nc("@label", "")
-                    }
-                }
+                width: parent.width
+                settingName: "top_layers"
+                updateAllExtruders: true
+                validator: UM.IntValidator {}
+            }
+        },
+        RecommendedSettingItem
+        {
+            settingName: catalog.i18nc("@action:label", "Bottom Layers")
+            tooltipText: catalog.i18nc("@label", "Defines the thickness of your parts floor")
+            settingControl: Cura.SingleSettingTextField
+            {
+                width: parent.width
+                settingName: "bottom_layers"
+                updateAllExtruders: true
+                validator: UM.IntValidator {}
             }
         }
     ]

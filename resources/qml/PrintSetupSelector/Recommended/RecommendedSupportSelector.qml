@@ -50,7 +50,7 @@ RecommendedSettingSection
         RecommendedSettingItem
         {
             Layout.preferredHeight: childrenRect.height
-            settingName: catalog.i18nc("@action:label", "Print with")
+            settingName: catalog.i18nc("@action:label", "Support Extruder")
             tooltipText: catalog.i18nc("@label", "The extruder train to use for printing the support. This is used in multi-extrusion.")
             // Hide this component when there is only one extruder
             enabled: Cura.ExtruderManager.enabledExtruderCount > 1
