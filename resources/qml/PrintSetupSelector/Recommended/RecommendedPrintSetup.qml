@@ -125,6 +125,11 @@ Flickable
                 width: parent.width
             }
 
+            RecommendedSpeedSelector
+            {
+                width: parent.width
+            }
+
             RecommendedAdhesionSelector
             {
                 width: parent.width

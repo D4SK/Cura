@@ -3097,6 +3097,48 @@
             "type": "category",
             "children":
             {
+                "speed_mode":
+                {
+                    "label": "Speed Mode",
+                    "description": "The speed mode to use for printing.",
+                    "type": "enum",
+                    "default_value": "normal",
+                    "options":
+                    {
+                        "0":
+                        {
+                            "label": "Super Slow",
+                            "description": "Super slow speed mode. Use this for very intricate models."
+                        },
+                        "1":
+                        {
+                            "label": "Slow",
+                            "description": "Slower speed for maximum reliability and quality."
+                        },
+                        "2":
+                        {
+                            "label": "Normal",
+                            "description": "Normal speed mode. This is the default speed mode."
+                        },
+                        "3":
+                        {
+                            "label": "Fast",
+                            "description": "Fast speed mode. This mode is faster than normal mode, but the quality is lower."
+                        },
+                        "4":
+                        {
+                            "label": "Super Fast",
+                            "description": "Super fast speed mode. This mode is faster than fast mode, but the quality is lower."
+                        },
+                        "5":
+                        {
+                            "label": "Extreme",
+                            "description": "Extreme speed mode. This mode is for experimental use only."
+                        }
+                    },
+                    "enabled": "machine_gcode_flavor != \"UltiGCode\"",
+                    "settable_per_mesh": false
+                },
                 "speed_print":
                 {
                     "label": "Print Speed",

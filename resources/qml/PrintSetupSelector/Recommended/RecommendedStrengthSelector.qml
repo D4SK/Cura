@@ -64,7 +64,7 @@ RecommendedSettingSection
         },
         RecommendedSettingItem
         {
-            settingName: catalog.i18nc("@action:label", "Shell Thickness")
+            settingName: catalog.i18nc("@action:label", "Outside Layers")
             tooltipText: catalog.i18nc("@label", "Defines the thickness of your part side walls, roof and floor.")
 
             settingControl: RowLayout
@@ -79,10 +79,10 @@ RecommendedSettingSection
                     Cura.SingleSettingTextField
                     {
                         width: parent.width
-                        settingName: "wall_thickness"
+                        settingName: "wall_line_count"
                         updateAllExtruders: true
                         validator: UM.FloatValidator {}
-                        unitText: catalog.i18nc("@label", "mm")
+                        unitText: catalog.i18nc("@label", "")
                     }
                 }
                 UM.ComponentWithIcon
@@ -93,10 +93,10 @@ RecommendedSettingSection
                     Cura.SingleSettingTextField
                     {
                         width: parent.width
-                        settingName: "top_bottom_thickness"
+                        settingName: "top_bottom_layers"
                         updateAllExtruders: true
                         validator: UM.FloatValidator {}
-                        unitText: catalog.i18nc("@label", "mm")
+                        unitText: catalog.i18nc("@label", "")
                     }
                 }
             }
