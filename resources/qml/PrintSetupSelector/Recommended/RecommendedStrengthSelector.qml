@@ -53,36 +53,72 @@ RecommendedSettingSection
         {
             settingName: catalog.i18nc("@action:label", "Walls")
             tooltipText: catalog.i18nc("@label", "Defines the thickness of your part side walls.")
-            settingControl: Cura.SingleSettingTextField
+
+            settingControl: RowLayout
             {
-                width: parent.width
-                settingName: "wall_line_count"
-                updateAllExtruders: true
-                validator: UM.IntValidator {}
+                anchors.fill: parent
+                spacing: UM.Theme.getSize("default_margin").width
+                UM.ComponentWithIcon
+                {
+                    Layout.fillWidth: true
+                    source: UM.Theme.getIcon("PrintWalls")
+                    Cura.SingleSettingTextField
+                    {
+                        width: parent.width
+                        settingName: "wall_line_count"
+                        updateAllExtruders: true
+                        validator: UM.IntValidator {}
+                    }
+                }
+                UM.ComponentWithIcon
+                {
+                    Layout.fillWidth: true
+                    Cura.SingleSettingTextField
+                    {
+                        width: parent.width
+                        state: "disabled"
+                        settingName: "wall_thickness"
+                        updateAllExtruders: true
+                        validator: UM.FloatValidator {}
+                        unitText: catalog.i18nc("@label", "mm")
+                    }
+                }
             }
         },
         RecommendedSettingItem
         {
             settingName: catalog.i18nc("@action:label", "Top Layers")
-            tooltipText: catalog.i18nc("@label", "Defines the thickness of your parts roof.")
-            settingControl: Cura.SingleSettingTextField
+            tooltipText: catalog.i18nc("@label", "Defines the thickness of your parts roof and floor.")
+
+            settingControl: RowLayout
             {
-                width: parent.width
-                settingName: "top_layers"
-                updateAllExtruders: true
-                validator: UM.IntValidator {}
-            }
-        },
-        RecommendedSettingItem
-        {
-            settingName: catalog.i18nc("@action:label", "Bottom Layers")
-            tooltipText: catalog.i18nc("@label", "Defines the thickness of your parts floor")
-            settingControl: Cura.SingleSettingTextField
-            {
-                width: parent.width
-                settingName: "bottom_layers"
-                updateAllExtruders: true
-                validator: UM.IntValidator {}
+                anchors.fill: parent
+                spacing: UM.Theme.getSize("default_margin").width
+                UM.ComponentWithIcon
+                {
+                    Layout.fillWidth: true
+                    source: UM.Theme.getIcon("PrintTopBottom")
+                    Cura.SingleSettingTextField
+                    {
+                        width: parent.width
+                        settingName: "top_bottom_layers"
+                        updateAllExtruders: true
+                        validator: UM.IntValidator {}
+                    }
+                }
+                UM.ComponentWithIcon
+                {
+                    Layout.fillWidth: true
+                    Cura.SingleSettingTextField
+                    {
+                        Layout.fillWidth: true
+                        width: parent.width
+                        settingName: "top_bottom_thickness"
+                        updateAllExtruders: true
+                        validator: UM.FloatValidator {}
+                        unitText: catalog.i18nc("@label", "mm")
+                    }
+                }
             }
         }
     ]
