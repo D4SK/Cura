@@ -41,7 +41,7 @@ class RecommendedMode(QObject):
                 value = "brim"
         else:
             if value not in ("skirt", "none"):
-                value = "skirt"
+                value = "none"
 
         user_changes_container.setProperty(adhesion_type_key, "value", value)
 
