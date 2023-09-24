@@ -287,7 +287,6 @@
         "roofing_pattern": { "value": "'zigzag'" },
         "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
         "skin_overlap": { "value": "5 if top_bottom_pattern != 'concentric' else 0" },
-        "speed_mode": { "value": "2" },
         "speed_infill":
         {
             "maximum_value_warning": "1510",
@@ -298,6 +297,7 @@
             "maximum_value_warning": "360",
             "value": "100"
         },
+        "speed_mode": { "value": "2" },
         "speed_prime_tower":
         {
             "maximum_value_warning": "510",
