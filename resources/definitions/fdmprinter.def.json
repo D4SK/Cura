@@ -1037,33 +1037,33 @@
                         }
                     }
                 },
-                "wall_thickness":
+                "wall_line_count":
                 {
-                    "label": "Wall Thickness",
-                    "description": "The thickness of the walls in the horizontal direction. This value divided by the wall line width defines the number of walls.",
-                    "unit": "mm",
-                    "default_value": 0.8,
-                    "value": "wall_line_width_0 if magic_spiralize else 0.8",
+                    "label": "Wall Line Count",
+                    "description": "The number of walls.",
+                    "default_value": 2,
                     "minimum_value": "0",
-                    "minimum_value_warning": "line_width",
-                    "maximum_value_warning": "10 * line_width",
-                    "maximum_value": "999999 * line_width",
-                    "type": "float",
+                    "minimum_value_warning": "1",
+                    "maximum_value_warning": "10",
+                    "maximum_value": "999999",
+                    "type": "int",
+                    "value": "1 if magic_spiralize else 2",
                     "limit_to_extruder": "wall_x_extruder_nr",
                     "settable_per_mesh": true,
                     "children":
                     {
-                        "wall_line_count":
+                        "wall_thickness":
                         {
-                            "label": "Wall Line Count",
-                            "description": "The number of walls. When calculated by the wall thickness, this value is rounded to a whole number.",
-                            "default_value": 2,
+                            "label": "Wall Thickness",
+                            "description": "The thickness of the walls in the horizontal direction.",
+                            "unit": "mm",
+                            "default_value": "(wall_line_count-1) * wall_line_width_x + wall_line_width_0",
+                            "value": "wall_line_width_0 if magic_spiralize else (wall_line_count-1) * wall_line_width_x + wall_line_width_0",
                             "minimum_value": "0",
-                            "minimum_value_warning": "1",
-                            "maximum_value_warning": "10",
-                            "maximum_value": "999999",
-                            "type": "int",
-                            "value": "1 if magic_spiralize else max(1, round((wall_thickness - wall_line_width_0) / wall_line_width_x) + 1) if wall_thickness != 0 else 0",
+                            "minimum_value_warning": "line_width",
+                            "maximum_value_warning": "10 * line_width",
+                            "maximum_value": "999999 * line_width",
+                            "type": "float",
                             "limit_to_extruder": "wall_x_extruder_nr",
                             "settable_per_mesh": true
                         }
@@ -1508,93 +1508,106 @@
                     "settable_globally": true,
                     "enabled": "extruders_enabled_count > 1"
                 },
-                "top_bottom_thickness":
+                "top_bottom_layers":
                 {
-                    "label": "Top/Bottom Thickness",
-                    "description": "The thickness of the top/bottom layers in the print. This value divided by the layer height defines the number of top/bottom layers.",
-                    "unit": "mm",
-                    "default_value": 0.8,
+                    "label": "Top/Bottom Layers",
+                    "description": "The number of top/bottom layers.",
+                    "default_value": 8,
                     "minimum_value": "0",
-                    "minimum_value_warning": "0.6",
-                    "maximum_value": "machine_height",
-                    "type": "float",
+                    "minimum_value_warning": "2",
+                    "maximum_value": "999999",
+                    "type": "int",
                     "limit_to_extruder": "top_bottom_extruder_nr",
                     "settable_per_mesh": true,
                     "children":
                     {
-                        "top_thickness":
+                        "top_bottom_thickness":
                         {
-                            "label": "Top Thickness",
-                            "description": "The thickness of the top layers in the print. This value divided by the layer height defines the number of top layers.",
+                            "label": "Top/Bottom Thickness",
+                            "description": "The thickness of the top/bottom layers in the print. This value divided by the layer height defines the number of top/bottom layers.",
                             "unit": "mm",
                             "default_value": 0.8,
+                            "value": "top_bottom_layers*layer_height",
                             "minimum_value": "0",
-                            "minimum_value_warning": "0.2 + resolveOrValue('layer_height')",
+                            "minimum_value_warning": "0.6",
                             "maximum_value": "machine_height",
                             "type": "float",
-                            "value": "top_bottom_thickness",
+                            "limit_to_extruder": "top_bottom_extruder_nr",
+                            "settable_per_mesh": true
+                        },
+                        "top_layers":
+                        {
+                            "label": "Top Layers",
+                            "description": "The number of top layers. When calculated by the top thickness, this value is rounded to a whole number.",
+                            "default_value": 8,
+                            "minimum_value": "0",
+                            "maximum_value_warning": "100",
+                            "maximum_value": "999999",
+                            "type": "int",
+                            "minimum_value_warning": "2",
+                            "value": "0 if infill_sparse_density == 100 else top_bottom_layers",
                             "limit_to_extruder": "top_bottom_extruder_nr",
                             "settable_per_mesh": true,
                             "children":
                             {
-                                "top_layers":
+                                "top_thickness":
                                 {
-                                    "label": "Top Layers",
-                                    "description": "The number of top layers. When calculated by the top thickness, this value is rounded to a whole number.",
-                                    "default_value": 8,
+                                    "label": "Top Thickness",
+                                    "description": "The thickness of the top layers in the print. This value divided by the layer height defines the number of top layers.",
+                                    "unit": "mm",
+                                    "default_value": 0.8,
                                     "minimum_value": "0",
-                                    "maximum_value_warning": "100",
-                                    "maximum_value": "999999",
-                                    "type": "int",
-                                    "minimum_value_warning": "2",
-                                    "value": "0 if infill_sparse_density == 100 else math.ceil(round(top_thickness / resolveOrValue('layer_height'), 4))",
+                                    "minimum_value_warning": "0.2 + resolveOrValue('layer_height')",
+                                    "maximum_value": "machine_height",
+                                    "type": "float",
+                                    "value": "top_layers*layer_height",
                                     "limit_to_extruder": "top_bottom_extruder_nr",
                                     "settable_per_mesh": true
                                 }
                             }
                         },
-                        "bottom_thickness":
+                        "bottom_layers":
                         {
-                            "label": "Bottom Thickness",
-                            "description": "The thickness of the bottom layers in the print. This value divided by the layer height defines the number of bottom layers.",
-                            "unit": "mm",
-                            "default_value": 0.6,
+                            "label": "Bottom Layers",
+                            "description": "The number of bottom layers. When calculated by the bottom thickness, this value is rounded to a whole number.",
                             "minimum_value": "0",
-                            "minimum_value_warning": "0.2 + resolveOrValue('layer_height')",
-                            "type": "float",
-                            "value": "top_bottom_thickness",
-                            "maximum_value": "machine_height",
+                            "minimum_value_warning": "2",
+                            "default_value": 6,
+                            "maximum_value": "999999",
+                            "type": "int",
+                            "value": "999999 if infill_sparse_density == 100 and not magic_spiralize else top_bottom_layers",
                             "limit_to_extruder": "top_bottom_extruder_nr",
                             "settable_per_mesh": true,
                             "children":
                             {
-                                "bottom_layers":
+                                "bottom_thickness":
                                 {
-                                    "label": "Bottom Layers",
-                                    "description": "The number of bottom layers. When calculated by the bottom thickness, this value is rounded to a whole number.",
+                                    "label": "Bottom Thickness",
+                                    "description": "The thickness of the bottom layers in the print. This value divided by the layer height defines the number of bottom layers.",
+                                    "unit": "mm",
+                                    "default_value": 0.6,
                                     "minimum_value": "0",
-                                    "minimum_value_warning": "2",
-                                    "default_value": 6,
-                                    "maximum_value": "999999",
-                                    "type": "int",
-                                    "value": "999999 if infill_sparse_density == 100 and not magic_spiralize else math.ceil(round(bottom_thickness / resolveOrValue('layer_height'), 4))",
-                                    "limit_to_extruder": "top_bottom_extruder_nr",
-                                    "settable_per_mesh": true
-                                },
-                                "initial_bottom_layers":
-                                {
-                                    "label": "Initial Bottom Layers",
-                                    "description": "The number of initial bottom layers, from the build-plate upwards. When calculated by the bottom thickness, this value is rounded to a whole number.",
-                                    "minimum_value": "0",
-                                    "minimum_value_warning": "2",
-                                    "maximum_value": "999999",
-                                    "default_value": 6,
-                                    "type": "int",
-                                    "value": "bottom_layers",
+                                    "minimum_value_warning": "0.2 + resolveOrValue('layer_height')",
+                                    "type": "float",
+                                    "value": "bottom_layers*layer_height",
+                                    "maximum_value": "machine_height",
                                     "limit_to_extruder": "top_bottom_extruder_nr",
                                     "settable_per_mesh": true
                                 }
                             }
+                        },
+                        "initial_bottom_layers":
+                        {
+                            "label": "Initial Bottom Layers",
+                            "description": "The number of initial bottom layers, from the build-plate upwards. When calculated by the bottom thickness, this value is rounded to a whole number.",
+                            "minimum_value": "0",
+                            "minimum_value_warning": "2",
+                            "maximum_value": "999999",
+                            "default_value": 6,
+                            "type": "int",
+                            "value": "bottom_layers",
+                            "limit_to_extruder": "top_bottom_extruder_nr",
+                            "settable_per_mesh": true
                         }
                     }
                 },
