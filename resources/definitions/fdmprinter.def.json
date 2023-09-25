@@ -3113,7 +3113,7 @@
                 "speed_mode":
                 {
                     "label": "Speed Mode",
-                    "description": "The speed mode to use for printing.",
+                    "description": "A preset to change the general printing speed and acceleration.",
                     "type": "enum",
                     "default_value": "2",
                     "options":
@@ -3121,7 +3121,7 @@
                         "0":
                         {
                             "label": "Super Slow",
-                            "description": "Super slow speed mode. Use this for very intricate models."
+                            "description": "Super slow mode. Use this for very intricate models."
                         },
                         "1":
                         {
@@ -3131,17 +3131,17 @@
                         "2":
                         {
                             "label": "Normal",
-                            "description": "Normal speed mode. This is the default speed mode."
+                            "description": "Normal mode. This is the default speed mode."
                         },
                         "3":
                         {
                             "label": "Fast",
-                            "description": "Fast speed mode. This mode is faster than normal mode, but the quality is lower."
+                            "description": "Fast mode. Faster than Normal but still reliable."
                         },
                         "4":
                         {
                             "label": "Super Fast",
-                            "description": "Super fast speed mode. This mode is faster than fast mode, but the quality is lower."
+                            "description": "Super fast mode. The fastest way to print production parts."
                         },
                         "5":
                         {
@@ -6536,7 +6536,7 @@
                 "duplication_mode":
                 {
                     "label": "Duplication Mode",
-                    "description": "Print an object twice using both Extruders simultaneously",
+                    "description": "Print an object twice using both Extruders simultaneously.",
                     "default_value": false,
                     "type": "bool",
                     "enabled": false,
