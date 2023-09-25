@@ -813,15 +813,7 @@ msgctxt "dual label"
 msgid "Dual Extrusion"
 msgstr "雙重擠出機"
 
-<<<<<<< HEAD
 #: fdmprinter.def.json
-msgctxt "idex_mode option duplicate"
-msgid "Duplicate"
-msgstr ""
-
-#: fdmprinter.def.json
-=======
->>>>>>> 0089b5e06cab4137a19943dc2f57197305f4e170
 msgctxt "machine_shape option elliptic"
 msgid "Elliptic"
 msgstr "類圓形"
@@ -2210,15 +2202,6 @@ msgctxt "support_conical_min_width description"
 msgid "Minimum width to which the base of the conical support area is reduced. Small widths can lead to unstable support structures."
 msgstr "錐形支撐區域底部的最小寬度。寬度較小可能導致不穩定的支撐結構。"
 
-<<<<<<< HEAD
-#: fdmprinter.def.json
-msgctxt "idex_mode option mirror"
-msgid "Mirror"
-msgstr ""
-
-#: fdmprinter.def.json
-=======
->>>>>>> 0089b5e06cab4137a19943dc2f57197305f4e170
 msgctxt "mold_enabled label"
 msgid "Mold"
 msgstr "模具"
@@ -2367,15 +2350,7 @@ msgctxt "infill_pattern option tetrahedral"
 msgid "Octet"
 msgstr "八面體"
 
-<<<<<<< HEAD
 #: fdmprinter.def.json
-msgctxt "idex_mode option off"
-msgid "Off"
-msgstr ""
-
-#: fdmprinter.def.json
-=======
->>>>>>> 0089b5e06cab4137a19943dc2f57197305f4e170
 msgctxt "retraction_combing option off"
 msgid "Off"
 msgstr "關"
@@ -2592,15 +2567,6 @@ msgctxt "prime_tower_enable description"
 msgid "Print a tower next to the print which serves to prime the material after each nozzle switch."
 msgstr "在列印件旁邊印一個塔，用在每次切換噴頭後填充線材。"
 
-<<<<<<< HEAD
-#: fdmprinter.def.json
-msgctxt "idex_mode description"
-msgid "Print an object twice using both Extruders simultaneously. Using mirror is preferred when applicable as it generates less vibrations"
-msgstr ""
-
-#: fdmprinter.def.json
-=======
->>>>>>> 0089b5e06cab4137a19943dc2f57197305f4e170
 msgctxt "infill_support_enabled description"
 msgid "Print infill structures only where tops of the model should be supported. Enabling this reduces print time and material usage, but leads to ununiform object strength."
 msgstr "只在模型頂部需要支撐的地方才列印填充。啟用此功能可減少列印時間和線材用量，但會導致物件強度不均勻。"
