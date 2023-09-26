@@ -373,8 +373,8 @@
             "maximum_value_warning": "170",
             "value": "100"
         },
-        "top_bottom_pattern": { "value": "'zigzag'" },
         "top_bottom_layers": { "value": "6" },
+        "top_bottom_pattern": { "value": "'zigzag'" },
         "travel_avoid_distance": { "value": "2" },
         "travel_avoid_supports": { "value": true },
         "wall_0_inset": { "value": "0" },
