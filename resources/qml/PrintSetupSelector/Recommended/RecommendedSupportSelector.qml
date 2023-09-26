@@ -5,7 +5,7 @@ import QtQuick 2.10
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 
-import UM 1.5 as UM
+import UM 1.7 as UM
 import Cura 1.7 as Cura
 
 
@@ -72,6 +72,21 @@ RecommendedSettingSection
             {
                 width: parent.width
                 settingName: "support_type"
+            }
+        },
+        RecommendedSettingItem
+        {
+            settingName: catalog.i18nc("@action:label", "Support Z Distance")
+            tooltipText: catalog.i18nc("@label", "Adjusts the distance between the support and the model. When using a different material for the support this can be set to 0. Otherwise a value similar to the layer height is needed to ensure easy removal of the supports.")
+            isCompressed: enableSupportRow.isCompressed
+
+            settingControl: Cura.SingleSettingTextField
+            {
+                width: parent.width
+                settingName: "support_z_distance"
+                updateAllExtruders: true
+                validator: UM.FloatValidator {}
+                unitText: catalog.i18nc("@label", "mm")
             }
         }
     ]
