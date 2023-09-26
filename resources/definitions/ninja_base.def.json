@@ -93,7 +93,6 @@
             "maximum_value_warning": "100000",
             "value": "acceleration_wall"
         },
-        "bottom_layers": { "value": "6" },
         "brim_width": { "value": "3" },
         "coasting_enable": { "value": false },
         "coasting_speed": { "value": 100 },
@@ -138,7 +137,7 @@
         "jerk_print":
         {
             "maximum_value_warning": "800",
-            "value": "min(speed_print*0.8, 600)"
+            "value": "min(speed_print*0.7, 600)"
         },
         "jerk_support":
         {
@@ -375,7 +374,7 @@
             "value": "100"
         },
         "top_bottom_pattern": { "value": "'zigzag'" },
-        "top_layers": { "value": "6" },
+        "top_bottom_layers": { "value": "6" },
         "travel_avoid_distance": { "value": "2" },
         "travel_avoid_supports": { "value": true },
         "wall_0_inset": { "value": "0" },

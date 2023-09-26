@@ -1538,7 +1538,7 @@
                         "top_layers":
                         {
                             "label": "Top Layers",
-                            "description": "The number of top layers. When calculated by the top thickness, this value is rounded to a whole number.",
+                            "description": "The number of top layers.",
                             "default_value": 8,
                             "minimum_value": "0",
                             "maximum_value_warning": "100",
@@ -1569,7 +1569,7 @@
                         "bottom_layers":
                         {
                             "label": "Bottom Layers",
-                            "description": "The number of bottom layers. When calculated by the bottom thickness, this value is rounded to a whole number.",
+                            "description": "The number of bottom layers.",
                             "minimum_value": "0",
                             "minimum_value_warning": "2",
                             "default_value": 6,
