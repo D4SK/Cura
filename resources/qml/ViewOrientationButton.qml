@@ -10,5 +10,5 @@ UM.SimpleButton
     width: UM.Theme.getSize("small_button").width
     height: UM.Theme.getSize("small_button").height
     hoverColor: UM.Theme.getColor("small_button_text_hover")
-    color: UM.Theme.getColor("small_button_text")
+    color: UM.Theme.getColor("secondary")
 }

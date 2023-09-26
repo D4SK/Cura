@@ -205,14 +205,12 @@ Item
 
         function trySetPosition(posNewX, posNewY)
         {
-            var margin = UM.Theme.getSize("narrow_margin");
-            var minPt = base.mapFromItem(null, margin.width, margin.height);
             var maxPt = base.mapFromItem(null,
-                CuraApplication.appWidth() - (contentContainer.width + margin.width),
-                CuraApplication.appHeight() - (contentContainer.height + margin.height));
-            var initialY = background.height + base.popupOffset + margin.height;
+                CuraApplication.appWidth() - (contentContainer.width),
+                CuraApplication.appHeight() - (contentContainer.height));
+            var initialY = background.height + base.popupOffset;
 
-            contentContainer.x = Math.max(minPt.x, Math.min(maxPt.x, posNewX));
+            contentContainer.x = Math.max(0, Math.min(maxPt.x, posNewX));
             contentContainer.y = Math.max(initialY, Math.min(maxPt.y, posNewY));
 
             if (dragPreferencesNamePrefix !== "")

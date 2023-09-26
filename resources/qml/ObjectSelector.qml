@@ -12,7 +12,6 @@ Item
 {
     id: objectSelector
     width: UM.Theme.getSize("objects_menu_size").width
-    property bool opened: UM.Preferences.getValue("cura/show_list_of_objects")
 
     // Eat up all the mouse events (we don't want the scene to react or have the scene context menu showing up)
     MouseArea
@@ -21,62 +20,11 @@ Item
         acceptedButtons: Qt.AllButtons
     }
 
-    Button
-    {
-        id: openCloseButton
-        width: parent.width
-        height: contentItem.height + bottomPadding
-        hoverEnabled: true
-        padding: 0
-        bottomPadding: UM.Theme.getSize("narrow_margin").height / 2 | 0
-
-        anchors
-        {
-            bottom: contents.top
-            horizontalCenter: parent.horizontalCenter
-        }
-
-        contentItem: Item
-        {
-            width: parent.width
-            height: label.height
-
-            UM.ColorImage
-            {
-                id: openCloseIcon
-                width: UM.Theme.getSize("standard_arrow").width
-                height: UM.Theme.getSize("standard_arrow").height
-                anchors.left: parent.left
-                color: openCloseButton.hovered ? UM.Theme.getColor("small_button_text_hover") : UM.Theme.getColor("small_button_text")
-                source: objectSelector.opened ? UM.Theme.getIcon("ChevronSingleDown") : UM.Theme.getIcon("ChevronSingleUp")
-            }
-
-            UM.Label
-            {
-                id: label
-                anchors.left: openCloseIcon.right
-                anchors.leftMargin: UM.Theme.getSize("default_margin").width
-                text: catalog.i18nc("@label", "Object list")
-                color: openCloseButton.hovered ? UM.Theme.getColor("small_button_text_hover") : UM.Theme.getColor("small_button_text")
-                elide: Text.ElideRight
-            }
-        }
-
-        background: Item {}
-
-        onClicked:
-        {
-            UM.Preferences.setValue("cura/show_list_of_objects", !objectSelector.opened)
-            objectSelector.opened = UM.Preferences.getValue("cura/show_list_of_objects")
-        }
-    }
-
     Rectangle
     {
         id: contents
         width: parent.width
-        visible: objectSelector.opened
-        height: visible ? listView.height + border.width * 2 : 0
+        height: listView.height + border.width * 2
         color: UM.Theme.getColor("main_background")
         border.width: UM.Theme.getSize("default_lining").width
         border.color: UM.Theme.getColor("lining")

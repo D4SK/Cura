@@ -272,11 +272,11 @@ UM.MainWindow
                 visible: CuraApplication.platformActivity
                 anchors
                 {
-                    bottom: jobSpecs.top
+                    bottom: viewOrientationControls.top
                     left: toolbar.right
                     leftMargin: UM.Theme.getSize("default_margin").width
                     rightMargin: UM.Theme.getSize("default_margin").width
-                    bottomMargin: UM.Theme.getSize("narrow_margin").height
+                    bottomMargin: UM.Theme.getSize("default_margin").height
                 }
             }
 
@@ -286,11 +286,11 @@ UM.MainWindow
                 visible: CuraApplication.platformActivity
                 anchors
                 {
-                    left: toolbar.right
-                    bottom: viewOrientationControls.top
+                    left: objectSelector.right
+                    bottom: parent.bottom
                     leftMargin: UM.Theme.getSize("default_margin").width
                     rightMargin: UM.Theme.getSize("default_margin").width
-                    bottomMargin: UM.Theme.getSize("thin_margin").width
+                    bottomMargin: UM.Theme.getSize("default_margin").width
                     topMargin: UM.Theme.getSize("thin_margin").width
                 }
             }

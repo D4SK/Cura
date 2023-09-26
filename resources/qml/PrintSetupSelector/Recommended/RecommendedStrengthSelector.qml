@@ -87,7 +87,7 @@ RecommendedSettingSection
         },
         RecommendedSettingItem
         {
-            settingName: catalog.i18nc("@action:label", "Top Layers")
+            settingName: catalog.i18nc("@action:label", "Top/Bottom Layers")
             tooltipText: catalog.i18nc("@label", "Defines the thickness of your parts roof and floor.")
 
             settingControl: RowLayout

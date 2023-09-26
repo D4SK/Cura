@@ -70,8 +70,6 @@ Item
     // Is the "drawer" open?
     readonly property alias expanded: content.visible
 
-    property alias expandedHighlightColor: expandedHighlight.color
-
     // What should the radius of the header be. This is also influenced by the headerCornerSide
     property alias headerRadius: background.radius
 
@@ -82,7 +80,7 @@ Item
     property alias contentClosePolicy : content.closePolicy
 
     // Distance between the header and the content.
-    property int popupOffset: 2 * UM.Theme.getSize("default_lining").height
+    property int popupOffset: 4 * UM.Theme.getSize("default_lining").height
 
     onEnabledChanged:
     {
@@ -109,7 +107,7 @@ Item
     {
         target: background
         property: "color"
-        value: base.enabled ? headerBackgroundColor : UM.Theme.getColor("disabled")
+        value: base.enabled ? (base.expanded ? headerActiveColor : headerBackgroundColor) : UM.Theme.getColor("disabled")
     }
 
     implicitHeight: 100 * screenScaleFactor
@@ -123,7 +121,7 @@ Item
         border.width: base.enableHeaderBackgroundBorder ? UM.Theme.getSize("default_lining").width : 0
         border.color: UM.Theme.getColor("lining")
 
-        color: base.enabled ? headerBackgroundColor : UM.Theme.getColor("disabled")
+        color: base.enabled ? (base.expanded ? headerActiveColor : headerBackgroundColor) : UM.Theme.getColor("disabled")
         anchors.fill: parent
 
         UM.Label
@@ -147,7 +145,7 @@ Item
                 onClicked: toggleContent()
                 hoverEnabled: true
                 onEntered: background.color = headerHoverColor
-                onExited: background.color = base.enabled ? headerBackgroundColor : UM.Theme.getColor("disabled")
+                onExited: background.color = base.enabled ? (base.expanded ? headerActiveColor : headerBackgroundColor) : UM.Theme.getColor("disabled")
             }
 
             Loader
@@ -161,17 +159,6 @@ Item
                     bottom: parent.bottom
                     margins: background.padding
                 }
-            }
-
-            // A highlight that is shown when the content is expanded
-            Rectangle
-            {
-                id: expandedHighlight
-                width: parent.width
-                height: UM.Theme.getSize("thick_lining").height
-                color: UM.Theme.getColor("primary")
-                visible: expanded
-                anchors.bottom: parent.bottom
             }
 
             UM.ColorImage
@@ -208,7 +195,7 @@ Item
 
         background: Cura.RoundedRectangle
         {
-            cornerSide: Cura.RoundedRectangle.Direction.Down
+            cornerSide: Cura.RoundedRectangle.Direction.All
             color: contentBackgroundColor
             border.width: UM.Theme.getSize("default_lining").width
             border.color: UM.Theme.getColor("lining")

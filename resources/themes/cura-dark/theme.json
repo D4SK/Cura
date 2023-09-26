@@ -13,9 +13,9 @@
 
         "accent_1": [25, 110, 240, 255],
         "accent_2": [16, 70, 156, 255],
-        "border_main": [118, 118, 119, 255],
-        "border_accent_1": [255, 255, 255, 255],
-        "border_accent_2": [243, 243, 243, 255],
+        "border_main": [57, 57, 58, 255],
+        "border_accent_1": [25, 110, 240, 255],
+        "border_accent_2": [16, 70, 156, 255],
         "border_field": [57, 57, 58, 255],
 
         "text_default": [255, 255, 255, 255],
@@ -58,7 +58,7 @@
         "secondary_button_hover": "background_3",
         "secondary_button_text": [255, 255, 255, 255],
 
-        "icon": "text_default",
+        "icon": [200, 200, 200, 255],
         "toolbar_background": "background_1",
         "toolbar_button_active": "background_3",
         "toolbar_button_hover": "background_3",
