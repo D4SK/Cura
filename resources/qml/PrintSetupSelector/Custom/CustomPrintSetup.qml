@@ -251,6 +251,7 @@ Item
             right: parent.right
             rightMargin: parent.padding
             bottom: parent.bottom
+            bottomMargin: UM.Theme.getSize("default_margin").height
         }
         z: tabBar.z - 1
         // Don't show the border when only one extruder
