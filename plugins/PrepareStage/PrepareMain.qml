@@ -15,7 +15,7 @@ Item
         id: actionPanelWidget
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.rightMargin: UM.Theme.getSize("thick_margin").width
+        anchors.rightMargin: UM.Theme.getSize("main_window_header").height
         anchors.bottomMargin: UM.Theme.getSize("thick_margin").height
     }
 }
