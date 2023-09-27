@@ -86,7 +86,6 @@ Item
 
     function updateDragPosition()
     {
-        contentContainer.trySetPosition(contentContainer.x, contentContainer.y);
     }
 
     onEnabledChanged:
@@ -202,23 +201,6 @@ Item
         border.width: UM.Theme.getSize("default_lining").width
         border.color: UM.Theme.getColor("lining")
         radius: UM.Theme.getSize("default_radius").width
-
-        function trySetPosition(posNewX, posNewY)
-        {
-            var maxPt = base.mapFromItem(null,
-                CuraApplication.appWidth() - (contentContainer.width),
-                CuraApplication.appHeight() - (contentContainer.height));
-            var initialY = background.height + base.popupOffset;
-
-            contentContainer.x = Math.max(0, Math.min(maxPt.x, posNewX));
-            contentContainer.y = Math.max(initialY, Math.min(maxPt.y, posNewY));
-
-            if (dragPreferencesNamePrefix !== "")
-            {
-                UM.Preferences.setValue(dragPreferencesNamePrefix + dragPreferencesNameX, contentContainer.x);
-                UM.Preferences.setValue(dragPreferencesNamePrefix + dragPreferencesNameY, contentContainer.y);
-            }
-        }
 
         Control
         {

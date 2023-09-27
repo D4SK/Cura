@@ -25,7 +25,7 @@ Item
 
         height: Math.round(0.5 * UM.Theme.getSize("main_window_header").height)
         onClicked: popup.opened ? popup.close() : popup.open()
-        visible: !loggedIn
+        visible: false
 
         hoverEnabled: true
 

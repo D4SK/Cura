@@ -42,7 +42,15 @@
     "colors": {
         "main_background": "background_1",
         "detail_background": "background_2",
-        "message_background": "background_1",
+        "message_background": [80, 80, 80, 135],
+        "message_border": [150, 150, 150, 140],
+        "message_close": [102, 102, 102, 255],
+        "message_close_hover": [8, 7, 63, 255],
+        "message_progressbar_background": [245, 245, 245, 255],
+        "message_progressbar_control": [50, 130, 255, 255],
+        "message_success_icon": [255, 255, 255, 255],
+        "message_warning_icon": [0, 0, 0, 255],
+        "message_error_icon": [255, 255, 255, 255],
         "wide_lining": [31, 36, 39, 255],
         "thick_lining": [255, 255, 255, 60],
         "lining": "border_main",
@@ -169,7 +177,7 @@
         "tool_panel_background": "background_1",
 
         "viewport_background": "background_1",
-        "volume_outline": [12, 169, 227, 128],
+        "volume_outline": [169, 169, 169, 128],
         "buildplate": [169, 169, 169, 255],
         "buildplate_grid_minor": [154, 154, 155, 255],
 
