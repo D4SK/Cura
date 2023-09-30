@@ -57,7 +57,7 @@
         "viewport_overlay": "background_1",
 
         "primary_text": "text_default",
-        "secondary": [95, 95, 95, 255],
+        "secondary": "background_2",
 
         "expandable_active": "background_2",
         "expandable_hover": "background_2",

@@ -249,7 +249,7 @@ Item
                     anchors.centerIn: parent
 
                     source: UM.Theme.getIcon("ThreeDots")
-                    color: UM.Theme.getColor("small_button_text")
+                    color: UM.Theme.getColor("text_lighter")
                 }
             }
         }
