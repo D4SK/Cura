@@ -3151,6 +3151,15 @@
                     },
                     "settable_per_mesh": true
                 },
+                "silent_mode":
+                {
+                    "label": "Silent Mode (reduce Acceleration)",
+                    "description": "A preset with reduced accelerations for quiet printing. This will increase print time.",
+                    "type": "bool",
+                    "default_value": false,
+                    "settable_per_mesh": true,
+                    "settable_per_extruder": true
+                },
                 "speed_print":
                 {
                     "label": "Print Speed",

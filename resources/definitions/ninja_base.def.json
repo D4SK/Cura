@@ -40,57 +40,57 @@
         },
         "acceleration_prime_tower":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_print"
         },
         "acceleration_print":
         {
-            "maximum_value_warning": "100000",
-            "value": "{0: 5000, 1: 10000, 2:30000, 3:35000, 4:35000, 5:35000}[int(speed_mode)]"
+            "maximum_value_warning": "70000",
+            "value": "((5000, 10000, 30000, 35000, 40000, 45000), (5000, 7000, 20000, 25000, 30000, 35000))[int(silent_mode)][int(speed_mode)]"
         },
         "acceleration_support":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_print"
         },
         "acceleration_support_infill":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_print"
         },
         "acceleration_support_interface":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_topbottom"
         },
         "acceleration_topbottom":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_print"
         },
         "acceleration_travel":
         {
-            "maximum_value_warning": "100000",
-            "value": "60000"
+            "maximum_value_warning": "120000",
+            "value": "((30000, 45000, 60000, 70000, 80000, 90000), (10000, 20000, 30000, 40000, 50000, 60000))[int(silent_mode)][int(speed_mode)]"
         },
         "acceleration_travel_layer_0":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "120000",
             "value": "acceleration_travel"
         },
         "acceleration_wall":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_print"
         },
         "acceleration_wall_0":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_wall"
         },
         "acceleration_wall_x":
         {
-            "maximum_value_warning": "100000",
+            "maximum_value_warning": "70000",
             "value": "acceleration_wall"
         },
         "brim_width": { "value": "3" },
@@ -118,7 +118,7 @@
         "gantry_height": { "value": "20" },
         "infill_enable_travel_optimization": { "value": true },
         "infill_line_width": { "value": "round(line_width * 0.46 / 0.44, 2)" },
-        "infill_overlap": { "value": "5" },
+        "infill_overlap": { "value": "round(4 + jerk_infill/60, 1)" },
         "infill_pattern": { "value": "'grid'" },
         "infill_wipe_dist": { "value": "0" },
         "initial_layer_line_width_factor": { "value": "120" },
@@ -137,7 +137,7 @@
         "jerk_print":
         {
             "maximum_value_warning": "800",
-            "value": "min(speed_print*0.7, 600)"
+            "value": "min(speed_print*0.7 - speed_print*0.3*int(silent_mode), 600)"
         },
         "jerk_support":
         {
@@ -285,7 +285,7 @@
         },
         "roofing_pattern": { "value": "'zigzag'" },
         "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
-        "skin_overlap": { "value": "5 if top_bottom_pattern != 'concentric' else 0" },
+        "skin_overlap": { "value": "round(4 + jerk_topbottom/60, 1) if top_bottom_pattern != 'concentric' else 0" },
         "speed_infill":
         {
             "maximum_value_warning": "1510",
@@ -300,12 +300,12 @@
         "speed_prime_tower":
         {
             "maximum_value_warning": "510",
-            "value": "round(speed_print*0.6, 1)"
+            "value": "min(round(speed_print*0.6, 1), 500)"
         },
         "speed_print":
         {
             "maximum_value_warning": "1510",
-            "value": "{0: 100, 1: 200, 2:300, 3:500, 4: 800, 5:1500}[int(speed_mode)]"
+            "value": "(100, 200, 300, 500, 800, 1500)[int(speed_mode)]"
         },
         "speed_slowdown_layers": { "value": "1" },
         "speed_support":
@@ -331,7 +331,7 @@
         "speed_travel":
         {
             "maximum_value_warning": "3500",
-            "value": "3000 if int(speed_mode) < 3 else 3500"
+            "value": "(3000 if int(speed_mode) < 3 else 3500) * (0.6 if bool(silent_mode) else 1)"
         },
         "speed_travel_layer_0":
         {
