@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 17:10+0200\n"
+"POT-Creation-Date: 2023-10-31 19:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -528,6 +528,10 @@ msgctxt "@action:inmenu menubar:edit"
 msgid "Arrange All Models in a grid"
 msgstr ""
 
+msgctxt "@action:inmenu menubar:edit"
+msgid "Arrange Selection"
+msgstr ""
+
 msgctxt "@label:button"
 msgid "Ask a question"
 msgstr ""
@@ -586,6 +590,10 @@ msgstr ""
 
 msgctxt "@info:title"
 msgid "Backups"
+msgstr ""
+
+msgctxt "@label"
+msgid "Balanced"
 msgstr ""
 
 msgctxt "@action:label"
@@ -952,6 +960,10 @@ msgctxt "@info:error"
 msgid "Could not interpret the server's response."
 msgstr ""
 
+msgctxt "@error:load"
+msgid "Could not load GCodeWriter plugin. Try to re-enable the plugin."
+msgstr ""
+
 msgctxt "@info:error"
 msgid "Could not reach Marketplace."
 msgstr ""
@@ -1163,10 +1175,6 @@ msgid "Decline and remove from account"
 msgstr ""
 
 msgctxt "@info:No intent profile selected"
-msgid "Default"
-msgstr ""
-
-msgctxt "@label"
 msgid "Default"
 msgstr ""
 
@@ -2211,6 +2219,18 @@ msgstr ""
 
 msgctxt "@info:generic"
 msgid "Make sure the g-code is suitable for your printer and printer configuration before sending the file to it. The g-code representation may not be accurate."
+msgstr ""
+
+msgctxt "@item:inlistbox"
+msgid "Makerbot Printfile"
+msgstr ""
+
+msgctxt "@error"
+msgid "MakerbotWriter could not save to the designated path."
+msgstr ""
+
+msgctxt "@error:not supported"
+msgid "MakerbotWriter does not support text mode."
 msgstr ""
 
 msgctxt "@action:inmenu"
@@ -3999,6 +4019,10 @@ msgctxt "@error:file_size"
 msgid "The backup exceeds the maximum file size."
 msgstr ""
 
+msgctxt "@text"
+msgid "The balanced profile is designed to strike a balance between productivity, surface quality, mechanical properties and dimensional accuracy."
+msgstr ""
+
 msgctxt "@info:tooltip"
 msgid "The base height from the build plate in millimeters."
 msgstr ""
@@ -5174,6 +5198,14 @@ msgstr ""
 
 msgctxt "name"
 msgid "G-code Writer"
+msgstr ""
+
+msgctxt "description"
+msgid "Provides support for writing MakerBot Format Packages."
+msgstr ""
+
+msgctxt "name"
+msgid "Makerbot Printfile Writer"
 msgstr ""
 
 msgctxt "description"
