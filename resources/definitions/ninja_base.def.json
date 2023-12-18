@@ -19,9 +19,9 @@
             0,
             0
         ],
+        "preferred_material": "generic_petg_gray",
         "preferred_quality_type": "normal",
         "preferred_variant_name": "AA 0.4",
-        "preferred_material": "generic_petg_gray",
         "supports_usb_connection": false,
         "variants_name": "Print core",
         "weight": -1
@@ -282,6 +282,7 @@
         "roofing_pattern": { "value": "'zigzag'" },
         "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
         "skin_overlap": { "value": "round(4 + jerk_topbottom/60, 1) if top_bottom_pattern != 'concentric' else 0" },
+        "speed_equalize_flow_width_factor": { "value": "0" },
         "speed_infill":
         {
             "maximum_value_warning": "1510",
@@ -349,7 +350,6 @@
             "maximum_value_warning": "1510",
             "value": "speed_wall"
         },
-        "speed_equalize_flow_width_factor": { "value": "0" },
         "support_angle": { "value": "50" },
         "support_bottom_distance": { "value": "support_z_distance" },
         "support_enable": { "value": true },
