@@ -21,6 +21,7 @@
         ],
         "preferred_quality_type": "normal",
         "preferred_variant_name": "AA 0.4",
+        "preferred_material": "generic_petg_gray",
         "supports_usb_connection": false,
         "variants_name": "Print core",
         "weight": -1
@@ -348,6 +349,7 @@
             "maximum_value_warning": "1510",
             "value": "speed_wall"
         },
+        "speed_equalize_flow_width_factor": { "value": "0" },
         "support_angle": { "value": "50" },
         "support_bottom_distance": { "value": "support_z_distance" },
         "support_enable": { "value": true },

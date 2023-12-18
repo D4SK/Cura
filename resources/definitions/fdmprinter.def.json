@@ -3184,8 +3184,8 @@
                     "description": "A preset with reduced accelerations for quiet printing. This will increase print time.",
                     "type": "bool",
                     "default_value": false,
-                    "settable_per_mesh": true,
-                    "settable_per_extruder": true
+                    "settable_per_mesh": false,
+                    "settable_per_extruder": false
                 },
                 "speed_print":
                 {
