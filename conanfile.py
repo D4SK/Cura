@@ -1,10 +1,11 @@
 import os
+from io import StringIO
 from pathlib import Path
 
 from jinja2 import Template
 
 from conan import ConanFile
-from conan.tools.files import copy, rmdir, save, mkdir, rm
+from conan.tools.files import copy, rmdir, save, mkdir, rm, update_conandata
 from conan.tools.microsoft import unix_path
 from conan.tools.env import VirtualRunEnv, Environment, VirtualBuildEnv
 from conan.tools.scm import Version
@@ -34,7 +35,7 @@ class CuraConan(ConanFile):
         "cloud_api_version": "ANY",
         "display_name": "ANY",  # TODO: should this be an option??
         "cura_debug_mode": [True, False],  # FIXME: Use profiles
-        "internal": [True, False],
+        "internal": ["True", "False", "true", "false"],  # Workaround for GH Action passing boolean as lowercase string
         "enable_i18n": [True, False],
     }
     default_options = {
@@ -44,13 +45,13 @@ class CuraConan(ConanFile):
         "cloud_api_version": "1",
         "display_name": "UltiMaker Cura",
         "cura_debug_mode": False,  # Not yet implemented
-        "internal": False,
+        "internal": "False",
         "enable_i18n": False,
     }
 
     def set_version(self):
         if not self.version:
-            self.version = "5.7.0-alpha"
+            self.version = self.conan_data["version"]
 
     @property
     def _i18n_options(self):
@@ -83,6 +84,10 @@ class CuraConan(ConanFile):
     @property
     def _enterprise(self):
         return self.options.enterprise in ["True", 'true']
+
+    @property
+    def _internal(self):
+        return self.options.internal in ["True", 'true']
 
     @property
     def _app_name(self):
@@ -146,6 +151,7 @@ class CuraConan(ConanFile):
         return "None"
 
     def _conan_installs(self):
+        self.output.info("Collecting conan installs")
         conan_installs = {}
 
         # list of conan installs
@@ -157,13 +163,22 @@ class CuraConan(ConanFile):
         return conan_installs
 
     def _python_installs(self):
+        self.output.info("Collecting python installs")
         python_installs = {}
 
         # list of python installs
-        python_ins_cmd = f"python -c \"import pkg_resources; print(';'.join([(s.key+','+ s.version) for s in pkg_resources.working_set]))\""
-        from six import StringIO
+        run_env = VirtualRunEnv(self)
+        env = run_env.environment()
+        env.prepend_path("PYTHONPATH", str(self._site_packages.as_posix()))
+        venv_vars = env.vars(self, scope = "run")
+
+        outer = '"' if self.settings.os == "Windows" else "'"
+        inner = "'" if self.settings.os == "Windows" else '"'
         buffer = StringIO()
-        self.run(python_ins_cmd, run_environment= True, env = "conanrun",  output=buffer)
+        with venv_vars.apply():
+            self.run(f"""python -c {outer}import pkg_resources;  print({inner};{inner}.join([(s.key+{inner},{inner}+ s.version) for s in pkg_resources.working_set])){outer}""",
+                          env = "conanrun",
+                          output = buffer)
 
         packages = str(buffer.getvalue()).split("-----------------\n")
         packages = packages[1].strip('\r\n').split(";")
@@ -182,7 +197,7 @@ class CuraConan(ConanFile):
         cura_version = Version(self.conf.get("user.cura:version", default = self.version, check_type = str))
         pre_tag = f"-{cura_version.pre}" if cura_version.pre else ""
         build_tag = f"+{cura_version.build}" if cura_version.build else ""
-        internal_tag = f"+internal" if self.options.internal else ""
+        internal_tag = f"+internal" if self._internal else ""
         cura_version = f"{cura_version.major}.{cura_version.minor}.{cura_version.patch}{pre_tag}{build_tag}{internal_tag}"
 
         with open(os.path.join(location, "CuraVersion.py"), "w") as f:
@@ -206,7 +221,7 @@ class CuraConan(ConanFile):
         pyinstaller_metadata = self.conan_data["pyinstaller"]
         datas = []
         for data in pyinstaller_metadata["datas"].values():
-            if not self.options.internal and data.get("internal", False):
+            if not self._internal and data.get("internal", False):
                 continue
 
             if "package" in data:  # get the paths from conan package
@@ -216,6 +231,8 @@ class CuraConan(ConanFile):
                     else:
                         src_path = os.path.join(self.source_folder, data["src"])
                 else:
+                    if data["package"] not in self.deps_cpp_info.deps:
+                        continue
                     src_path = os.path.join(self.deps_cpp_info[data["package"]].rootpath, data["src"])
             elif "root" in data:  # get the paths relative from the install folder
                 src_path = os.path.join(self.install_folder, data["root"], data["src"])
@@ -285,6 +302,9 @@ class CuraConan(ConanFile):
                 short_version = f"'{cura_version.major}.{cura_version.minor}.{cura_version.patch}'",
             ))
 
+    def export(self):
+        update_conandata(self, {"version": self.version})
+
     def export_sources(self):
         copy(self, "*", os.path.join(self.recipe_folder, "plugins"), os.path.join(self.export_sources_folder, "plugins"))
         copy(self, "*", os.path.join(self.recipe_folder, "resources"), os.path.join(self.export_sources_folder, "resources"), excludes = "*.mo")
@@ -313,6 +333,8 @@ class CuraConan(ConanFile):
             self.options["openssl"].shared = True
         if self.conf.get("user.curaengine:sentry_url", "", check_type=str) != "":
             self.options["curaengine"].enable_sentry = True
+            self.options["arcus"].enable_sentry = True
+            self.options["clipper"].enable_sentry = True
 
     def validate(self):
         version = self.conf.get("user.cura:version", default = self.version, check_type = str)
@@ -320,26 +342,23 @@ class CuraConan(ConanFile):
             raise ConanInvalidConfiguration("Only versions 5+ are support")
 
     def requirements(self):
+        for req in self.conan_data["requirements"]:
+            if self._internal and "fdm_materials" in req:
+                continue
+            if not self._enterprise and "native_cad_plugin" in req:
+                continue
+            self.requires(req)
+        if self._internal:
+            for req in self.conan_data["requirements_internal"]:
+                self.requires(req)
+        self.requires("cpython/3.10.4@ultimaker/stable")
+        self.requires("clipper/6.4.2@ultimaker/stable")
+        self.requires("openssl/3.2.0")
+        self.requires("protobuf/3.21.12")
         self.requires("boost/1.82.0")
         self.requires("spdlog/1.12.0")
         self.requires("fmt/10.1.1")
-        self.requires("curaengine_grpc_definitions/0.1.0")
         self.requires("zlib/1.2.13")
-        self.requires("pyarcus/5.3.0")
-        self.requires("dulcificum/(latest)@ultimaker/stable")
-        self.requires("curaengine/(latest)@ultimaker/testing")
-        self.requires("pysavitar/5.3.0")
-        self.requires("pynest2d/5.3.0")
-        self.requires("curaengine_plugin_gradual_flow/0.1.0")
-        self.requires("uranium/(latest)@ultimaker/testing")
-        self.requires("cura_binary_data/(latest)@ultimaker/testing")
-        self.requires("cpython/3.10.4@ultimaker/stable")
-        self.requires("openssl/3.2.0")
-        if self.options.internal:
-            self.requires("cura_private_data/(latest)@internal/testing")
-            self.requires("fdm_materials/(latest)@internal/testing")
-        else:
-            self.requires("fdm_materials/(latest)@ultimaker/testing")
 
     def build_requirements(self):
         if self.options.get_safe("enable_i18n", False):
@@ -378,6 +397,12 @@ class CuraConan(ConanFile):
             copy(self, "*", curaengine_plugin_gradual_flow.bindirs[0], self.source_folder, keep_path = False)
             copy(self, "bundled_*.json", curaengine_plugin_gradual_flow.resdirs[1], str(self.source_path.joinpath("resources", "bundled_packages")), keep_path = False)
 
+            if self._enterprise:
+                rmdir(self, str(self.source_path.joinpath("plugins", "NativeCADplugin")))
+                curaengine_plugin_gradual_flow = self.dependencies["native_cad_plugin"].cpp_info
+                copy(self, "*", curaengine_plugin_gradual_flow.resdirs[0], str(self.source_path.joinpath("plugins", "NativeCADplugin")), keep_path = True)
+                copy(self, "bundled_*.json", curaengine_plugin_gradual_flow.resdirs[1], str(self.source_path.joinpath("resources", "bundled_packages")), keep_path = False)
+
         # Copy resources of cura_binary_data
         cura_binary_data = self.dependencies["cura_binary_data"].cpp_info
         copy(self, "*", cura_binary_data.resdirs[0], str(self._share_dir.joinpath("cura")), keep_path = True)
@@ -399,7 +424,7 @@ class CuraConan(ConanFile):
         copy(self, "*", fdm_materials.resdirs[0], self.source_folder)
 
         # Copy internal resources
-        if self.options.internal:
+        if self._internal:
             cura_private_data = self.dependencies["cura_private_data"].cpp_info
             copy(self, "*", cura_private_data.resdirs[0], str(self._share_dir.joinpath("cura")))
 
@@ -417,7 +442,6 @@ class CuraConan(ConanFile):
             )
 
         if self.options.get_safe("enable_i18n", False) and self._i18n_options["extract"]:
-            # Update the po and pot files
             vb = VirtualBuildEnv(self)
             vb.generate()
 
@@ -502,10 +526,14 @@ echo "CURA_APP_NAME={{ cura_app_name }}" >> ${{ env_prefix }}GITHUB_ENV
 
         if self.in_local_cache:
             self.runenv_info.append_path("PYTHONPATH", os.path.join(self.package_folder, "site-packages"))
+            self.env_info.PYTHONPATH.append(os.path.join(self.package_folder, "site-packages"))
             self.runenv_info.append_path("PYTHONPATH", os.path.join(self.package_folder, "plugins"))
+            self.env_info.PYTHONPATH.append(os.path.join(self.package_folder, "plugins"))
         else:
             self.runenv_info.append_path("PYTHONPATH", self.source_folder)
+            self.env_info.PYTHONPATH.append(self.source_folder)
             self.runenv_info.append_path("PYTHONPATH", os.path.join(self.source_folder, "plugins"))
+            self.env_info.PYTHONPATH.append(os.path.join(self.source_folder, "plugins"))
 
     def package_id(self):
         self.info.clear()
@@ -518,6 +546,8 @@ echo "CURA_APP_NAME={{ cura_app_name }}" >> ${{ env_prefix }}GITHUB_ENV
         del self.info.options.cloud_api_version
         del self.info.options.display_name
         del self.info.options.cura_debug_mode
+        if self.options.get_safe("enable_i18n", False):
+            del self.info.options.enable_i18n
 
         # TODO: Use the hash of requirements.txt and requirements-ultimaker.txt, Because changing these will actually result in a different
         #  Cura. This is needed because the requirements.txt aren't managed by Conan and therefor not resolved in the package_id. This isn't
