@@ -38,7 +38,7 @@ def build_appimage(dist_path, version, appimage_filename):
     """
     generate_appimage_builder_config(dist_path, version, appimage_filename)
     create_appimage()
-    sign_appimage(appimage_filename)
+    # sign_appimage(appimage_filename)
 
 
 def generate_appimage_builder_config(dist_path, version, appimage_filename):
