@@ -26,13 +26,13 @@ env:
 
 jobs:
   conan-recipe-version:
-    uses: ultimaker/cura-workflows/.github/workflows/conan-recipe-version.yml@main
+    uses: D4SK/cura-workflows/.github/workflows/conan-recipe-version.yml@main
     with:
       project_name: cura_resources
 
   conan-package-export:
     needs: [ conan-recipe-version ]
-    uses: ultimaker/cura-workflows/.github/workflows/conan-recipe-export.yml@main
+    uses: D4SK/cura-workflows/.github/workflows/conan-recipe-export.yml@main
     with:
       recipe_id_full: ${{ needs.conan-recipe-version.outputs.recipe_id_full }}
       recipe_id_latest: ${{ needs.conan-recipe-version.outputs.recipe_id_latest }}
