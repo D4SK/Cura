@@ -84,16 +84,10 @@
             "maximum_value_warning": "70000",
             "value": "acceleration_print"
         },
-        "acceleration_wall_0":
-        {
-            "maximum_value_warning": "70000",
-            "value": "acceleration_wall"
-        },
-        "acceleration_wall_x":
-        {
-            "maximum_value_warning": "70000",
-            "value": "acceleration_wall"
-        },
+        "acceleration_wall_0": { "maximum_value_warning": "70000" },
+        "acceleration_wall_x": { "maximum_value_warning": "70000" },
+        "acceleration_wall_0_roofing": { "maximum_value_warning": "70000" },
+        "acceleration_wall_x_roofing": { "maximum_value_warning": "70000" },
         "brim_width": { "value": "3" },
         "coasting_enable": { "value": false },
         "coasting_speed": { "value": 100 },
@@ -172,16 +166,10 @@
             "maximum_value_warning": "800",
             "value": "jerk_print"
         },
-        "jerk_wall_0":
-        {
-            "maximum_value_warning": "800",
-            "value": "jerk_wall"
-        },
-        "jerk_wall_x":
-        {
-            "maximum_value_warning": "800",
-            "value": "jerk_wall"
-        },
+        "jerk_wall_0": { "maximum_value_warning": "800" },
+        "jerk_wall_x": { "maximum_value_warning": "800" },
+        "jerk_wall_0_roofing": { "maximum_value_warning": "800" },
+        "jerk_wall_x_roofing": { "maximum_value_warning": "800" },
         "layer_start_x": { "value": "sum(extruderValues('machine_extruder_start_pos_x')) / len(extruderValues('machine_extruder_start_pos_x'))" },
         "layer_start_y": { "value": "sum(extruderValues('machine_extruder_start_pos_y')) / len(extruderValues('machine_extruder_start_pos_y'))" },
         "machine_acceleration": { "value": 50000 },
@@ -349,6 +337,14 @@
         {
             "maximum_value_warning": "1510",
             "value": "speed_wall"
+        },
+        "speed_wall_0_roofing":
+        {
+            "maximum_value_warning": "1510"
+        },
+        "speed_wall_x_roofing":
+        {
+            "maximum_value_warning": "1510"
         },
         "speed_equalize_flow_width_factor": { "value": "0" },
         "support_angle": { "value": "50" },
