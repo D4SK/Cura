@@ -19,9 +19,9 @@
             0,
             0
         ],
+        "preferred_material": "generic_petg_gray",
         "preferred_quality_type": "normal",
         "preferred_variant_name": "AA 0.4",
-        "preferred_material": "generic_petg_gray",
         "supports_usb_connection": false,
         "variants_name": "Print core",
         "weight": -1
@@ -85,8 +85,8 @@
             "value": "acceleration_print"
         },
         "acceleration_wall_0": { "maximum_value_warning": "70000" },
-        "acceleration_wall_x": { "maximum_value_warning": "70000" },
         "acceleration_wall_0_roofing": { "maximum_value_warning": "70000" },
+        "acceleration_wall_x": { "maximum_value_warning": "70000" },
         "acceleration_wall_x_roofing": { "maximum_value_warning": "70000" },
         "brim_width": { "value": "3" },
         "coasting_enable": { "value": false },
@@ -111,12 +111,12 @@
             "minimum_value": "0"
         },
         "gantry_height": { "value": "20" },
+        "infill_angles": { "value": "[45, 135, 225, 315]" },
         "infill_enable_travel_optimization": { "value": true },
         "infill_line_width": { "value": "round(line_width * 0.46 / 0.44, 2)" },
         "infill_overlap": { "value": "round(4 + jerk_infill/60, 1)" },
         "infill_pattern": { "value": "'grid'" },
         "infill_wipe_dist": { "value": "0" },
-        "infill_angles": { "value": "[45, 135, 225, 315]" },
         "initial_layer_line_width_factor": { "value": "120" },
         "jerk_enabled": { "value": true },
         "jerk_infill":
@@ -167,8 +167,8 @@
             "value": "jerk_print"
         },
         "jerk_wall_0": { "maximum_value_warning": "800" },
-        "jerk_wall_x": { "maximum_value_warning": "800" },
         "jerk_wall_0_roofing": { "maximum_value_warning": "800" },
+        "jerk_wall_x": { "maximum_value_warning": "800" },
         "jerk_wall_x_roofing": { "maximum_value_warning": "800" },
         "layer_start_x": { "value": "sum(extruderValues('machine_extruder_start_pos_x')) / len(extruderValues('machine_extruder_start_pos_x'))" },
         "layer_start_y": { "value": "sum(extruderValues('machine_extruder_start_pos_y')) / len(extruderValues('machine_extruder_start_pos_y'))" },
@@ -271,6 +271,7 @@
         "roofing_pattern": { "value": "'zigzag'" },
         "skin_edge_support_layers": { "value": "3 if infill_sparse_density < 30 else 0" },
         "skin_overlap": { "value": "round(4 + jerk_topbottom/60, 1) if top_bottom_pattern != 'concentric' else 0" },
+        "speed_equalize_flow_width_factor": { "value": "0" },
         "speed_infill":
         {
             "maximum_value_warning": "1510",
@@ -333,20 +334,13 @@
             "maximum_value_warning": "1510",
             "value": "round(speed_wall * 0.9, -1)"
         },
+        "speed_wall_0_roofing": { "maximum_value_warning": "1510" },
         "speed_wall_x":
         {
             "maximum_value_warning": "1510",
             "value": "speed_wall"
         },
-        "speed_wall_0_roofing":
-        {
-            "maximum_value_warning": "1510"
-        },
-        "speed_wall_x_roofing":
-        {
-            "maximum_value_warning": "1510"
-        },
-        "speed_equalize_flow_width_factor": { "value": "0" },
+        "speed_wall_x_roofing": { "maximum_value_warning": "1510" },
         "support_angle": { "value": "50" },
         "support_bottom_distance": { "value": "support_z_distance" },
         "support_enable": { "value": true },
