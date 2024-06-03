@@ -122,6 +122,7 @@
         "infill_overlap": { "value": "round(4 + jerk_infill/60, 1)" },
         "infill_pattern": { "value": "'grid'" },
         "infill_wipe_dist": { "value": "0" },
+        "infill_angles": { "value": "[45, 135, 225, 315]" },
         "initial_layer_line_width_factor": { "value": "120" },
         "jerk_enabled": { "value": true },
         "jerk_infill":
@@ -204,7 +205,7 @@
         "machine_min_cool_heat_time_window": { "value": 0.001 },
         "machine_nozzle_cool_down_speed": { "value": 2.17 },
         "machine_nozzle_heat_up_speed": { "value": 12.65 },
-        "machine_start_gcode": { "default_value": "START_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} DUPLICATION_MODE={duplication_mode}" },
+        "machine_start_gcode": { "default_value": ";DUPLICATION_MODE:{duplication_mode}\nSTART_PRINT BED_TEMP={material_bed_temperature_layer_0} INITIAL_TEMP={material_initial_print_temperature} EXTRUDER_TEMP={material_print_temperature_layer_0} DUPLICATION_MODE={duplication_mode}" },
         "material_bed_temperature":
         {
             "maximum_value_warning": "125",
